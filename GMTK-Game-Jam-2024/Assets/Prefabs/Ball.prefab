@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 2843669237656591144}
   - component: {fileID: 2703137693008409734}
   - component: {fileID: 3355351067224687450}
+  - component: {fileID: 5932405977679721513}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -180,12 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f9348758a13d024d9df82f69e28af37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numDots: 10
   dotsParent: {fileID: 718735151719625248}
   dotPrefab: {fileID: 3875129478360219338, guid: c25a7cb7dba3eb1479750cfd07d722f8, type: 3}
-  spacing: 0.1
-  dotMinScale: 0.1
-  dotMaxScale: 0.4
 --- !u!58 &2843669237656591144
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -361,3 +358,15 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &5932405977679721513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8409277755035816823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c79d5a041e26b47dd85a847ef130a8cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
