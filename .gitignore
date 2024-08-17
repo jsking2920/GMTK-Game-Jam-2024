@@ -111,3 +111,5 @@ fmod_editor.log
 # FMOD 1.10.x (Legacy)
 /Assets/FMODAssets/*
 /Assets/FMODStudioCache.meta
+GMTK-Game-Jam-2024/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
+GMTK-Game-Jam-2024/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset.meta
