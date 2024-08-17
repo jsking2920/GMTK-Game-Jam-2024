@@ -2,61 +2,65 @@ using UnityEngine;
 
 public class TrajectoryPath : MonoBehaviour
 {
-    [SerializeField] int dotsNumber;
-    [SerializeField] GameObject dotsLine;
-    [SerializeField] GameObject dotPrefab;
-    [SerializeField] float spacing;
+    [SerializeField] private int numDots;
+    [SerializeField] private GameObject dotsParent;
+    [SerializeField] private GameObject dotPrefab;
+
+    [SerializeField] private float spacing;
     [SerializeField] [Range(0.01f, 0.3f)] float dotMinScale;
     [SerializeField] [Range(0.3f, 0.5f)] float dotMaxScale;
-    Transform[] dotsList;
-    Vector2 pos;
-    float timeStamp;
+
+    private Transform[] dotsList;
 
     void Start()
     {
-        HideDots();
+        HidePath();
         PrepareDots();
     }
 
-    void PrepareDots()
+    private void PrepareDots()
     {
-        dotsList = new Transform[dotsNumber];
+        dotsList = new Transform[numDots];
         dotPrefab.transform.localScale = Vector3.one * dotMaxScale;
 
         float scale = dotMaxScale;
-        float scaleFactor = scale / dotsNumber;
+        float scaleFactor = scale / numDots;
 
-        for(int i = 0; i < dotsNumber; i++) {
+        for (int i = 0; i < numDots; i++) 
+        {
             dotsList[i] = Instantiate(dotPrefab, null).transform;
-            dotsList[i].parent = dotsLine.transform;
+            dotsList[i].parent = dotsParent.transform;
 
             dotsList[i].localScale = Vector3.one * scale;
-            if(scale > dotMinScale)
+            if (scale > dotMinScale)
             {
                 scale -= scaleFactor;
             }
         }
     }
 
-    public void UpdateDots(Vector3 ballPosition, Vector2 forceApplied)
+    public void UpdatePath(Vector3 ballPosition, Vector2 forceApplied)
     {
-        timeStamp = spacing;
-        for(int i = 0;i < dotsNumber; i++)
-        {
-            pos.x = (ballPosition.x + forceApplied.x * timeStamp);
-            pos.y = (ballPosition.y + forceApplied.y * timeStamp) - (Physics2D.gravity.magnitude*timeStamp*timeStamp)/2f;
+        float curDotOffset = spacing;
+        Vector2 dotPos = new Vector2();
 
-            dotsList[i].position = pos;
-            timeStamp += spacing;
+        for (int i = 0; i < numDots; i++)
+        {
+            curDotOffset = spacing * i;
+            dotPos.x = ballPosition.x + forceApplied.x * curDotOffset;
+            dotPos.y = ballPosition.y + forceApplied.y * curDotOffset; // - (Physics2D.gravity.magnitude * curDotOffset * curDotOffset) / 2f;
+
+            dotsList[i].position = dotPos;
         }
     }
 
-    public void ShowDots()
+    public void ShowPath()
     {
-        dotsLine.SetActive(true);
+        dotsParent.SetActive(true);
     }
-    public void HideDots()
+
+    public void HidePath()
     {
-        dotsLine.SetActive(false);
+        dotsParent.SetActive(false);
     }
 }

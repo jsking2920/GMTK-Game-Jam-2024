@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4454799837095399680}
   - component: {fileID: 7461619206941123959}
   m_Layer: 0
-  m_Name: LineDots
+  m_Name: TrajectoryLineDot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
