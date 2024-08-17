@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour
     private LineRenderer lineRenderer;
     private Transform t;
     private Rigidbody2D rb;
+    private TrajectoryRenderer trajectoryPathRenderer;
 
     [SerializeField] private float maxPullBackDist = 4;
     [SerializeField] private float maxForceMagnitude = 25;
@@ -18,7 +19,7 @@ public class Ball : MonoBehaviour
     private float currentForceMagnitude;
 
     // Ball velocity gets clamped to zero below this threshold to shorten time to wait for next shot
-    private float minVel = 0.35f;
+    private float minVel = 0.3f;
 
     // Is this ball shootable by the player
     public bool isCueBall = true; 
@@ -30,6 +31,7 @@ public class Ball : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         rb = GetComponent<Rigidbody2D>();
         t = transform;
+        trajectoryPathRenderer = GetComponent<TrajectoryRenderer>();
     }
 
     private void Start()
@@ -57,7 +59,7 @@ public class Ball : MonoBehaviour
     #region Event Callbacks
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("bounce");
+
     }
 
     private void OnMouseDown()
@@ -69,6 +71,9 @@ public class Ball : MonoBehaviour
 
             currentForceMagnitude = 0.0f;
             currentForceDir = Vector2.zero;
+
+            trajectoryPathRenderer.DrawPath(t.position, currentForceDir, currentForceMagnitude, minVel, rb.mass, rb.drag);
+            trajectoryPathRenderer.ShowPath();
         }
     }
 
@@ -83,6 +88,7 @@ public class Ball : MonoBehaviour
             currentForceDir = pullBackVector.normalized;
 
             DrawLine(t.position, (Vector2)t.position - pullBackVector);
+            trajectoryPathRenderer.DrawPath(t.position, currentForceDir, currentForceMagnitude, minVel, rb.mass, rb.drag);
         }
     }
 
@@ -91,9 +97,9 @@ public class Ball : MonoBehaviour
         if (isCueBall)
         {
             lineRenderer.enabled = false;
+            trajectoryPathRenderer.HidePath();
 
-            rb.velocity = Vector2.zero;
-            rb.AddForce(currentForceDir * currentForceMagnitude, ForceMode2D.Impulse);
+            rb.velocity = currentForceDir * currentForceMagnitude;
 
             currentForceMagnitude = 0.0f;
             currentForceDir = Vector2.zero;

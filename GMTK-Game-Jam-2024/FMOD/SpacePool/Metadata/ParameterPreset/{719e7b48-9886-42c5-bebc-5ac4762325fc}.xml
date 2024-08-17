@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{719e7b48-9886-42c5-bebc-5ac4762325fc}">
+		<property name="name">
+			<value>Random</value>
+		</property>
+		<relationship name="folder">
+			<destination>{15465c20-b707-4478-b3c9-a5734bf2262d}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{f684101d-8581-42c5-8bc0-8b384169a44e}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{f684101d-8581-42c5-8bc0-8b384169a44e}">
+		<property name="minimum">
+			<value>-1</value>
+		</property>
+		<property name="isHeld">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>-1</value>
+		</property>
+	</object>
+</objects>
