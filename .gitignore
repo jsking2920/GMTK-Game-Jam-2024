@@ -99,7 +99,10 @@ Thumbs.db
 /[Aa]ssets/Plugins/FMOD/Cache.meta
 /[Aa]ssets/Plugins/FMOD/Cache/Editor.meta
 
-!/GMTK-Game-Jam-2024/FMOD/GMTK2024/Build/
+/GMTK-Game-Jam-2024/FMOD/SpacePool/.cache/
+/GMTK-Game-Jam-2024/FMOD/SpacePool/.user/
+/GMTK-Game-Jam-2024/FMOD/SpacePool/.*
+!/GMTK-Game-Jam-2024/FMOD/SpacePool/Build/
 
 # Log-files
 fmod.log
