@@ -34,7 +34,7 @@ public class BallShootManager : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-        ball.DesactivateRb();
+        //ball.DesactivateRb();
     }
 
     void Update()
@@ -57,7 +57,7 @@ public class BallShootManager : MonoBehaviour
 
     void OnDragStart()
     {
-        ball.DesactivateRb();
+        //ball.DesactivateRb();
         startPoint = cam.ScreenToWorldPoint(Input.mousePosition);
 
         trajectory.ShowDots();
@@ -72,13 +72,13 @@ public class BallShootManager : MonoBehaviour
 
         //Debug.DrawLine(startPoint, endPoint);
 
-        trajectory.UpdateDots(ball.pos, force);
+        //trajectory.UpdateDots(ball.pos, force);
     }
 
     void OnDragEnd()
     {
-        ball.ActivateRb();
-        ball.Push(force);
+        //ball.ActivateRb();
+        //ball.Push(force);
         trajectory.HideDots();
     }
 
