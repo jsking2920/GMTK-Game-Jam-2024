@@ -11,7 +11,7 @@ enum InitialVelocityType
 	SetVelocity
 }
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class OrbitalBody : MonoBehaviour
 {
 	private static float G = 0.0001f; //make this handled in another script perhaps
@@ -19,20 +19,20 @@ public class OrbitalBody : MonoBehaviour
 	[SerializeField] private List<OrbitalBody> _parents;
 
 	[SerializeField] private InitialVelocityType _initVelocityType = InitialVelocityType.AutoCircular;
-	[SerializeField] private Vector3 _initVelocity;
+	[SerializeField] private Vector2 _initVelocity;
 
-	private Rigidbody _body;
-	public Rigidbody body
+	private Rigidbody2D _body;
+	public Rigidbody2D body
 	{
 		get
 		{
 			if (_body) return _body;
-			return _body = GetComponent<Rigidbody>();
+			return _body = GetComponent<Rigidbody2D>();
 		}
 	}
 
 	private bool _initialLaunchHandled = false;
-	[DoNotSerialize] public Vector3 InitialLaunchVelocity;
+	[DoNotSerialize] public Vector2 InitialLaunchVelocity;
 
 	// Start is called before the first frame update
 	private void Start()
@@ -59,7 +59,7 @@ public class OrbitalBody : MonoBehaviour
 				_initVelocityType = InitialVelocityType.SetVelocity;
 			}
 			InitialLaunchVelocity = _initVelocity;
-			body.AddForce(InitialLaunchVelocity, ForceMode.VelocityChange);
+			body.velocity += InitialLaunchVelocity;
 		}
 		else
 		{
@@ -69,20 +69,19 @@ public class OrbitalBody : MonoBehaviour
 				{
 					foreach (var parent in _parents)
 					{
-						Vector3 difference = parent.body.position - body.position;
-						Vector3 gravityDirection = difference.normalized;
+						Vector2 difference = parent.body.position - body.position;
+						Vector2 gravityDirection = difference.normalized;
 						float distance = difference.magnitude;
-
-						Vector3 direction = Vector3.Cross(parent.transform.up, gravityDirection);
+						Vector2 direction = new Vector2(gravityDirection.y, -gravityDirection.x);
 						InitialLaunchVelocity += direction * Mathf.Sqrt(G * parent.body.mass / distance);
 					}
 					break;
 				}
 				case InitialVelocityType.SetSpeed:
 				{
-					Vector3 difference = _parents[0].body.position - body.position;
-					Vector3 gravityDirection = difference.normalized;
-					Vector3 direction = Vector3.Cross(_parents[0].transform.up, gravityDirection);
+					Vector2 difference = _parents[0].body.position - body.position;
+					Vector2 gravityDirection = difference.normalized;
+					Vector2 direction = new Vector2(gravityDirection.y, -gravityDirection.x);
 					InitialLaunchVelocity = direction * _initVelocity.x;
 					break;
 				}
@@ -93,7 +92,7 @@ public class OrbitalBody : MonoBehaviour
 				}
 			}
 
-			body.AddForce(InitialLaunchVelocity, ForceMode.VelocityChange);
+			body.velocity += InitialLaunchVelocity;
 		}
 
 		_initialLaunchHandled = true;
@@ -109,13 +108,13 @@ public class OrbitalBody : MonoBehaviour
 
 	private void ApplyGravityFrom(OrbitalBody parent)
 	{
-		Vector3 difference = parent.body.position - body.position;
+		Vector2 difference = parent.body.position - body.position;
 		float distance = difference.magnitude;
 
 		float forceMagnitude = G * parent.body.mass * body.mass / Mathf.Pow(distance, 2);
 
-		Vector3 forceDirection = difference.normalized;
-		Vector3 forceVector = forceDirection * forceMagnitude;
+		Vector2 forceDirection = difference.normalized;
+		Vector2 forceVector = forceDirection * forceMagnitude;
 		body.AddForce(forceVector);
 	}
 }
