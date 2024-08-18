@@ -28,8 +28,11 @@ public class Ball : MonoBehaviour
 
     public float radius = 0.5f;
 
+    private AnimationController _animationController;
+
     private void Awake()
     {
+        _animationController = GetComponent<AnimationController>();
         lineRenderer = GetComponent<LineRenderer>();
         rb = GetComponent<Rigidbody2D>();
         t = transform;
@@ -52,23 +55,25 @@ public class Ball : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (rb.velocity.magnitude < minVel)
+        if (rb.velocity.magnitude > 0 && rb.velocity.magnitude < minVel)
         {
             rb.velocity = Vector2.zero;
+            _animationController.EndMovement();
         }
     }
 
     #region Event Callbacks
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+	    _animationController.OnCollision();
     }
 
     private void OnMouseDown()
     {
         if (isCueBall)
         {
-            DrawLine(t.position, GetMousePos());
+	        _animationController.StartAim();
+			DrawLine(t.position, GetMousePos());
             lineRenderer.enabled = true;
 
             currentForceMagnitude = 0.0f;
@@ -85,7 +90,7 @@ public class Ball : MonoBehaviour
     {
         if (isCueBall)
         {
-            Vector3 mousePos = GetMousePos();
+	        Vector3 mousePos = GetMousePos();
             Vector2 pullBackVector = Vector2.ClampMagnitude(t.position - mousePos, maxPullBackDist);
 
             currentForceMagnitude = Mathf.Lerp(0.0f, maxForceMagnitude, Mathf.InverseLerp(0.0f, maxPullBackDist, pullBackVector.magnitude));
@@ -102,6 +107,7 @@ public class Ball : MonoBehaviour
     {
         if (isCueBall)
         {
+            _animationController.EndAim();
             lineRenderer.enabled = false;
             trajectoryPathRenderer.HidePath();
 

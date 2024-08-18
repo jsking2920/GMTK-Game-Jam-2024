@@ -163,15 +163,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5035624675093465455, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.94
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5035624675093465455, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.09
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5035624675093465455, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.5990171
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5035624675093465455, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
       propertyPath: m_LocalRotation.w
@@ -207,7 +207,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d911c5bf55054124cae6ec6262468bf8, type: 2}
     - target: {fileID: 8409277755035816823, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
       propertyPath: m_Name
-      value: Wormhole0 Variant
+      value: Portal
       objectReference: {fileID: 0}
     - target: {fileID: 9193239607396655110, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
       propertyPath: sprite
