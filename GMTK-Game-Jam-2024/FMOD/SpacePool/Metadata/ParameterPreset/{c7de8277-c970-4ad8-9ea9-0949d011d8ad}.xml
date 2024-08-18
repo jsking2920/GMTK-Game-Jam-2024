@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{c7de8277-c970-4ad8-9ea9-0949d011d8ad}">
+		<property name="name">
+			<value>ChargePercent</value>
+		</property>
+		<relationship name="folder">
+			<destination>{15465c20-b707-4478-b3c9-a5734bf2262d}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{ba8990ce-fec6-47f7-a239-0d85f38e6be7}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{ba8990ce-fec6-47f7-a239-0d85f38e6be7}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>1.7000000476837158</value>
+		</property>
+	</object>
+</objects>

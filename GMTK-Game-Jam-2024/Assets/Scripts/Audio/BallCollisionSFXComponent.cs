@@ -26,7 +26,6 @@ public class BallCollisionSFXComponent : MonoBehaviour
         EventInstance sound = RuntimeManager.CreateInstance("event:/SFX/Collision");
         sound.setParameterByName("ImpactSpeed", remappedSpeed);
         sound.set3DAttributes(RuntimeUtils.To3DAttributes(contactPoint.point));
-        UnityEngine.Debug.Log(distance + ", " + attn);
 
         sound.setVolume(attn);
         sound.start();

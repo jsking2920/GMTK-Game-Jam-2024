@@ -10,6 +10,7 @@ public class Ball : MonoBehaviour
     private Transform t;
     private TrajectoryRenderer trajectoryPathRenderer;
     [HideInInspector] public Rigidbody2D rb;
+    private FMOD.Studio.EventInstance chargeUpSFX;
 
     [SerializeField] private float maxPullBackDist = 4;
     [SerializeField] private float maxForceMagnitude = 25;
@@ -43,6 +44,13 @@ public class Ball : MonoBehaviour
         isShootable = false;
         currentForceDir = Vector2.zero;
         currentForceMagnitude = 0.0f;
+
+        if (isCueBall)
+        {
+            chargeUpSFX = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/ChargeUp");
+            chargeUpSFX.setParameterByName("ChargePercent", 0, true);
+            chargeUpSFX.start();
+        }
     }
 
     void FixedUpdate()
@@ -77,6 +85,8 @@ public class Ball : MonoBehaviour
 
             trajectoryPathRenderer.DrawPath(currentForceDir, currentForceMagnitude);
             trajectoryPathRenderer.ShowPath();
+            
+            chargeUpSFX.setParameterByName("ChargePercent", 0);
         }
     }
 
@@ -92,6 +102,8 @@ public class Ball : MonoBehaviour
 
             DrawLine(t.position, (Vector2)t.position - pullBackVector);
             trajectoryPathRenderer.DrawPath(currentForceDir, currentForceMagnitude);
+            
+            chargeUpSFX.setParameterByName("ChargePercent", currentForceMagnitude / maxForceMagnitude);
         }
     }
 
@@ -114,6 +126,7 @@ public class Ball : MonoBehaviour
             isShootable = false;
             
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Shoot");
+            chargeUpSFX.setParameterByName("ChargePercent", 0);
         }
     }
     #endregion
