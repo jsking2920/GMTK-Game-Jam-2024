@@ -14,6 +14,7 @@ enum InitialVelocityType
 public class OrbitalBody : MonoBehaviour
 {
 	private static float G = 10f; //make this handled in another script perhaps
+	private static float minGravDist = 0.4f;
 
 	public bool IsAttractor;
 	public bool IsAttractee;
@@ -73,7 +74,7 @@ public class OrbitalBody : MonoBehaviour
 	private void ApplyGravityTo(OrbitalBody other)
 	{
 		Vector2 difference = body.position - other.body.position;
-		float distance = difference.magnitude;
+		float distance = Mathf.Max(difference.magnitude, minGravDist);
 
 		float forceMagnitude = G * body.mass * other.body.mass / Mathf.Pow(distance, 2);
 

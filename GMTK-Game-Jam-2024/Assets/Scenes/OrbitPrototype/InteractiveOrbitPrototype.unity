@@ -3112,7 +3112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1239a6151bd2d95469d4ab7e41452754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsAttractor: 1
+  IsAttractor: 0
   IsAttractee: 0
   _initVelocityType: 0
   _initVelocity: {x: 0, y: 0}
