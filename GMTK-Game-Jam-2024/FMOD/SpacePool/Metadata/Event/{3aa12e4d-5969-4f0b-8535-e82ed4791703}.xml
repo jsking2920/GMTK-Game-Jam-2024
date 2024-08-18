@@ -229,6 +229,9 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{5c469e07-8c26-435e-9c95-8a3d76524e96}">
+		<property name="startOffset">
+			<value>3</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{5690c5e8-c5ab-473f-a6d6-66ed6371ac0e}</destination>
 		</relationship>
@@ -265,12 +268,6 @@
 		</property>
 		<property name="value">
 			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>0.321532845</value>
-		</property>
-		<property name="isSCurve">
-			<value>true</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{bf1c5e8b-3819-4353-a42f-d2c0ddeda4f6}">

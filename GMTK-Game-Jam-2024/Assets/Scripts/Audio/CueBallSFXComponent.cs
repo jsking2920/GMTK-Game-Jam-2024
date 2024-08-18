@@ -24,6 +24,5 @@ public class CueBallSFXComponent : MonoBehaviour
     {
         float sparklePercent = Mathf.Clamp01(rb.velocity.magnitude / maxSparkleSpeed);
         sparkle.setParameterByName("SparklePercent", sparklePercent);
-        Debug.Log(sparklePercent);
     }
 }

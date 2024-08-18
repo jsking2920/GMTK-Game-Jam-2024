@@ -62,7 +62,7 @@
 	</object>
 	<object class="EventAutomatableProperties" id="{d560399a-5bfc-4bfb-9a8c-3eaedec6a8f4}">
 		<property name="maxVoices">
-			<value>12</value>
+			<value>32</value>
 		</property>
 		<property name="voiceStealing">
 			<value>1</value>
@@ -111,6 +111,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{475e7bb7-f56e-42c4-a0c6-ffd9abe99c25}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<relationship name="modulators">
 			<destination>{df80a6c0-3446-4e5e-864b-663b47633a2c}</destination>
 		</relationship>
@@ -279,8 +282,11 @@
 	</object>
 	<object class="MixerBusFader" id="{10a7a2cd-03c9-4a85-96e6-98208cb64cc4}" />
 	<object class="SpatialiserEffect" id="{45dc5767-461f-4f32-8244-c42efcfc926c}">
+		<property name="distanceRolloffType">
+			<value>4</value>
+		</property>
 		<property name="maximumDistance">
-			<value>75</value>
+			<value>40</value>
 		</property>
 		<property name="overrideRange">
 			<value>true</value>
@@ -306,8 +312,11 @@
 	</object>
 	<object class="MixerBusFader" id="{7222b71f-7656-44bf-934d-b8c86a15f021}" />
 	<object class="SpatialiserEffect" id="{aa6e1dc4-0d96-4006-9b8a-92bd026f0d69}">
+		<property name="distanceRolloffType">
+			<value>4</value>
+		</property>
 		<property name="maximumDistance">
-			<value>75</value>
+			<value>40</value>
 		</property>
 		<property name="overrideRange">
 			<value>true</value>
@@ -316,13 +325,10 @@
 			<value>1</value>
 		</property>
 		<property name="soundSize">
-			<value>26</value>
+			<value>15</value>
 		</property>
 		<property name="minimumExtent">
 			<value>236</value>
-		</property>
-		<property name="panBlend">
-			<value>0.560000002</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{44c931dd-1322-481b-9e7b-fee1c4712d80}">
