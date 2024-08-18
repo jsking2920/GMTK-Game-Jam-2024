@@ -23,6 +23,8 @@ public class OrbitalBody : MonoBehaviour
 	[SerializeField] private Vector2 _initVelocity;
 	[SerializeField] private List<OrbitalBody> _initialOrbits;
 
+	public HashSet<OrbitalBody> IgnoredBodies = new();
+
 	private Rigidbody2D _body;
 	public Rigidbody2D body
 	{
@@ -46,9 +48,19 @@ public class OrbitalBody : MonoBehaviour
 			return;
 		}
 		var otherOrbitalBody = other.GetComponent<OrbitalBody>();
-		if (otherOrbitalBody != null && otherOrbitalBody.IsAttractee)
+		if (otherOrbitalBody != null && otherOrbitalBody.IsAttractee && !IgnoredBodies.Contains(otherOrbitalBody))
 		{
 			ApplyGravityTo(otherOrbitalBody);
+		}
+	}
+
+	//this is for wormholes, when object TPs we temporarily ignore gravity from destination wormhole
+	private void OnTriggerExit2D(Collider2D other)
+	{
+		var otherBody = other.GetComponent<OrbitalBody>();
+		if (otherBody != null && IgnoredBodies.Contains(otherBody))
+		{
+			IgnoredBodies.Remove(otherBody);
 		}
 	}
 
