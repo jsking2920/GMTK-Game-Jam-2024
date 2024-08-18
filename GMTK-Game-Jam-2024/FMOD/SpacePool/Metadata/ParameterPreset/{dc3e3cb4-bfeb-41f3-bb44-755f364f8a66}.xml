@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{dc3e3cb4-bfeb-41f3-bb44-755f364f8a66}">
+		<property name="name">
+			<value>SparklePercent</value>
+		</property>
+		<relationship name="folder">
+			<destination>{15465c20-b707-4478-b3c9-a5734bf2262d}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{ee5215ba-771b-4501-bd20-5cc75b4021a7}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{ee5215ba-771b-4501-bd20-5cc75b4021a7}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
