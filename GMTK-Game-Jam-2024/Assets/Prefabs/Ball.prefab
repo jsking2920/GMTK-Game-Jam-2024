@@ -166,9 +166,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 0}
+  rb: {fileID: 0}
   maxPullBackDist: 4
   maxForceMagnitude: 25
+  minVel: 0.3
   isCueBall: 0
+  radius: 0.5
 --- !u!114 &4130302729824589955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dotsParent: {fileID: 718735151719625248}
   dotPrefab: {fileID: 3875129478360219338, guid: c25a7cb7dba3eb1479750cfd07d722f8, type: 3}
+  collisionCircleSpritePrefab: {fileID: 8667352218137878829, guid: 6037250c54e641242a4a8db8bfb2e1fd, type: 3}
 --- !u!58 &2843669237656591144
 CircleCollider2D:
   m_ObjectHideFlags: 0
