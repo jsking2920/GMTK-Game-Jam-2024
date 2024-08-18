@@ -14,7 +14,7 @@ enum InitialVelocityType
 public class OrbitalBody : MonoBehaviour
 {
 	private static float G = 10f; //make this handled in another script perhaps
-	private static float minGravDist = 0.4f;
+	private static float minGravDist = 1f;
 
 	public bool IsAttractor;
 	public bool IsAttractee;
