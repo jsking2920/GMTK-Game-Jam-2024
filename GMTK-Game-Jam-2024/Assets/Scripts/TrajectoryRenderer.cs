@@ -196,8 +196,9 @@ public class TrajectoryRenderer : MonoBehaviour
     // https://www.youtube.com/watch?v=guWIF87CmBg
     // https://www.real-world-physics-problems.com/physics-of-billiards.html
     //
-    // Instead probably just simulate it with an invisible ball and skip all this nonsense
-    // Alternatily raycast and reflect the vector for a good enough eyeball of the normal of the collision without considering mass/momenetum/etc
+    // Instead do this:
+    // https://www.youtube.com/watch?v=p8e4Kpl9b28
+    // https://ximer.itch.io/peggle-unity
     //
     // Based on: https://ericleong.me/research/circle-circle/ and https://stackoverflow.com/questions/51905268/how-to-find-closest-point-on-line
     private Tuple<Vector2, Vector2> GetPositionAtTimeOfCollision(Ball otherBall, Vector2 initialVel, Vector2 velAroundTimeOfImpact)

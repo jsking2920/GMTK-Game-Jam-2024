@@ -6,28 +6,31 @@ public class BlackHole : MonoBehaviour
 {
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		var body = other.GetComponent<OrbitalBody>();
-		if (body)
+        OrbitalBody body = other.GetComponent<OrbitalBody>();
+		if (body != null)
 		{
 			if (other.CompareTag("CueBall")) //or whatever
 			{
 				HandleCueBall(body);
 			}
-			else
+			else if (other.CompareTag("Ball"))
 			{
 				HandleBall(body);
+			}
+			else
+			{
+				// TODO
 			}
 		}
 	}
 
 	private void HandleBall(OrbitalBody body)
 	{
-		body.gameObject.SetActive(false);
-		//communicate with score tracking somehow
+		GameManager.Instance.OnBallSunk(body.gameObject.GetComponent<Ball>());
 	}
 
 	private void HandleCueBall(OrbitalBody body)
 	{
-		//move to start or something
-	}
+        GameManager.Instance.OnCueBallSunk(body.gameObject.GetComponent<Ball>());
+    }
 }

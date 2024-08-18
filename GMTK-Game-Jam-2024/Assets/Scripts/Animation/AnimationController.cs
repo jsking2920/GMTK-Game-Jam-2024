@@ -18,17 +18,17 @@ public class AnimationController : MonoBehaviour
         animator = AnimationTransform.GetComponent<Animator>();
         radius = transform.GetComponent<Renderer>().bounds.extents.magnitude * 0.6f;
         
-        moveAnimationTowardCamera();
+        MoveAnimationTowardCamera();
     }
 
     private void Update()
     {
         // can move to a signal based call
-        moveAnimationTowardCamera();
+        MoveAnimationTowardCamera();
     }
 
     // moves the face towards the camera 
-    void moveAnimationTowardCamera()
+    void MoveAnimationTowardCamera()
     {
         AnimationTransform.position = transform.position;
         AnimationTransform.LookAt(targetCamera.transform);
@@ -36,28 +36,39 @@ public class AnimationController : MonoBehaviour
     }
 
     [ContextMenu("hit")]
-    public void onCollision()
+    public void OnCollision()
     {
         animator.SetTrigger("hit");
     }
     [ContextMenu("startMovement")]
-    public void startMovement()
+    public void StartMovement()
     {
         animator.SetBool("inCharge", true);
     }
     [ContextMenu("endMovement")]
-    public void endMovement() 
+    public void EndMovement() 
     {
         animator.SetBool("inCharge", false);
     }
     [ContextMenu("death")]
-    public void onDeath()
+    public void OnDeath()
     {
         animator.SetTrigger("dead");
     }
     [ContextMenu("celebrate")]
-    public void onOtherObjectDeath()
+    public void OnOtherObjectDeath()
     {
         animator.SetTrigger("startDestruction");
+    }
+
+    [ContextMenu("startAim")]
+    public void StartAim()
+    {
+        animator.SetTrigger("startAim");
+    }
+    [ContextMenu("endAim")]
+    public void EndAim()
+    {
+        animator.SetTrigger("endAim");
     }
 }

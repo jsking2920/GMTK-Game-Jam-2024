@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 enum InitialVelocityType
 {
@@ -14,6 +12,7 @@ enum InitialVelocityType
 public class OrbitalBody : MonoBehaviour
 {
 	private static float G = 10f; //make this handled in another script perhaps
+	private static float minGravDist = 1f;
 
 	public bool IsAttractor;
 	public bool IsAttractee;
@@ -21,6 +20,8 @@ public class OrbitalBody : MonoBehaviour
 	[SerializeField] private InitialVelocityType _initVelocityType = InitialVelocityType.SetVelocity;
 	[SerializeField] private Vector2 _initVelocity;
 	[SerializeField] private List<OrbitalBody> _initialOrbits;
+
+	public HashSet<OrbitalBody> IgnoredBodies = new();
 
 	private Rigidbody2D _body;
 	public Rigidbody2D body
@@ -45,9 +46,19 @@ public class OrbitalBody : MonoBehaviour
 			return;
 		}
 		var otherOrbitalBody = other.GetComponent<OrbitalBody>();
-		if (otherOrbitalBody && otherOrbitalBody.IsAttractee)
+		if (otherOrbitalBody != null && otherOrbitalBody.IsAttractee && !IgnoredBodies.Contains(otherOrbitalBody))
 		{
 			ApplyGravityTo(otherOrbitalBody);
+		}
+	}
+
+	//this is for wormholes, when object TPs we temporarily ignore gravity from destination wormhole
+	private void OnTriggerExit2D(Collider2D other)
+	{
+		var otherBody = other.GetComponent<OrbitalBody>();
+		if (otherBody != null && IgnoredBodies.Contains(otherBody))
+		{
+			IgnoredBodies.Remove(otherBody);
 		}
 	}
 
@@ -73,7 +84,7 @@ public class OrbitalBody : MonoBehaviour
 	private void ApplyGravityTo(OrbitalBody other)
 	{
 		Vector2 difference = body.position - other.body.position;
-		float distance = difference.magnitude;
+		float distance = Mathf.Max(difference.magnitude, minGravDist);
 
 		float forceMagnitude = G * body.mass * other.body.mass / Mathf.Pow(distance, 2);
 
