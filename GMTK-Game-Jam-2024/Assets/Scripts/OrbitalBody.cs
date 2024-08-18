@@ -6,20 +6,21 @@ using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 enum InitialVelocityType
 {
-	AutoCircular,
-	SetSpeed, //uses just x comp of initVelocity, moves perpendicular to gravity
-	SetVelocity
+	SetVelocity,
+	AutoCircular
 }
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class OrbitalBody : MonoBehaviour
 {
-	private static float G = 0.0001f; //make this handled in another script perhaps
+	private static float G = 10f; //make this handled in another script perhaps
 
-	[SerializeField] private List<OrbitalBody> _parents;
+	public bool IsAttractor;
+	public bool IsAttractee;
 
-	[SerializeField] private InitialVelocityType _initVelocityType = InitialVelocityType.AutoCircular;
+	[SerializeField] private InitialVelocityType _initVelocityType = InitialVelocityType.SetVelocity;
 	[SerializeField] private Vector2 _initVelocity;
+	[SerializeField] private List<OrbitalBody> _initialOrbits;
 
 	private Rigidbody2D _body;
 	public Rigidbody2D body
@@ -31,90 +32,53 @@ public class OrbitalBody : MonoBehaviour
 		}
 	}
 
-	private bool _initialLaunchHandled = false;
-	[DoNotSerialize] public Vector2 InitialLaunchVelocity;
-
 	// Start is called before the first frame update
 	private void Start()
 	{
-		foreach (var parent in _parents)
-		{
-			parent.InitialLaunch();
-		}
-
 		InitialLaunch();
+	}
+
+	private void OnTriggerStay2D(Collider2D other)
+	{
+		if (!IsAttractor)
+		{
+			return;
+		}
+		var otherOrbitalBody = other.GetComponent<OrbitalBody>();
+		if (otherOrbitalBody && otherOrbitalBody.IsAttractee)
+		{
+			ApplyGravityTo(otherOrbitalBody);
+		}
 	}
 
 	public void InitialLaunch()
 	{
-		if (_initialLaunchHandled)
+		if (_initialOrbits.Count == 0 || _initVelocityType == InitialVelocityType.SetVelocity)
 		{
-			return;
-		}
-		if (_parents.Count == 0)
-		{
-			if (_initVelocityType != InitialVelocityType.SetVelocity)
-			{
-				Debug.LogWarning("Parentless OrbitalBody requires an initial velocity type of SetVelocity");
-				_initVelocityType = InitialVelocityType.SetVelocity;
-			}
-			InitialLaunchVelocity = _initVelocity;
-			body.velocity += InitialLaunchVelocity;
+			body.velocity += _initVelocity;
 		}
 		else
 		{
-			switch (_initVelocityType)
+			foreach (var parent in _initialOrbits)
 			{
-				case InitialVelocityType.AutoCircular:
-				{
-					foreach (var parent in _parents)
-					{
-						Vector2 difference = parent.body.position - body.position;
-						Vector2 gravityDirection = difference.normalized;
-						float distance = difference.magnitude;
-						Vector2 direction = new Vector2(gravityDirection.y, -gravityDirection.x);
-						InitialLaunchVelocity += direction * Mathf.Sqrt(G * parent.body.mass / distance);
-					}
-					break;
-				}
-				case InitialVelocityType.SetSpeed:
-				{
-					Vector2 difference = _parents[0].body.position - body.position;
-					Vector2 gravityDirection = difference.normalized;
-					Vector2 direction = new Vector2(gravityDirection.y, -gravityDirection.x);
-					InitialLaunchVelocity = direction * _initVelocity.x;
-					break;
-				}
-				case InitialVelocityType.SetVelocity:
-				{
-					InitialLaunchVelocity = _initVelocity;
-					break;
-				}
+				Vector2 difference = parent.body.position - body.position;
+				Vector2 gravityDirection = difference.normalized;
+				float distance = difference.magnitude;
+				Vector2 direction = new Vector2(gravityDirection.y, -gravityDirection.x);
+				body.velocity += direction * Mathf.Sqrt(G * parent.body.mass / distance);
 			}
-
-			body.velocity += InitialLaunchVelocity;
-		}
-
-		_initialLaunchHandled = true;
-	}
-
-	private void FixedUpdate()
-	{
-		foreach (var parent in _parents)
-		{
-			ApplyGravityFrom(parent);
 		}
 	}
 
-	private void ApplyGravityFrom(OrbitalBody parent)
+	private void ApplyGravityTo(OrbitalBody other)
 	{
-		Vector2 difference = parent.body.position - body.position;
+		Vector2 difference = body.position - other.body.position;
 		float distance = difference.magnitude;
 
-		float forceMagnitude = G * parent.body.mass * body.mass / Mathf.Pow(distance, 2);
+		float forceMagnitude = G * body.mass * other.body.mass / Mathf.Pow(distance, 2);
 
 		Vector2 forceDirection = difference.normalized;
 		Vector2 forceVector = forceDirection * forceMagnitude;
-		body.AddForce(forceVector);
+		other.body.AddForce(forceVector);
 	}
 }
