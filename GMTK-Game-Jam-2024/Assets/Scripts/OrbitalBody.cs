@@ -45,7 +45,7 @@ public class OrbitalBody : MonoBehaviour
 			return;
 		}
 		var otherOrbitalBody = other.GetComponent<OrbitalBody>();
-		if (otherOrbitalBody && otherOrbitalBody.IsAttractee)
+		if (otherOrbitalBody != null && otherOrbitalBody.IsAttractee)
 		{
 			ApplyGravityTo(otherOrbitalBody);
 		}

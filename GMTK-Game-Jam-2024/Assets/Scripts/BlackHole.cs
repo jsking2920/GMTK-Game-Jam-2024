@@ -7,7 +7,7 @@ public class BlackHole : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		var body = other.GetComponent<OrbitalBody>();
-		if (body)
+		if (body != null)
 		{
 			if (other.CompareTag("CueBall")) //or whatever
 			{
