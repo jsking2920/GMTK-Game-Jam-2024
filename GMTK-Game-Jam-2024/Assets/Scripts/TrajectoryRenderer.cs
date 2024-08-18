@@ -190,8 +190,16 @@ public class TrajectoryRenderer : MonoBehaviour
         dotsParent.SetActive(false);
     }
 
-    // Based on: https://ericleong.me/research/circle-circle/ and https://stackoverflow.com/questions/51905268/how-to-find-closest-point-on-line and https://www.euclideanspace.com/physics/dynamics/collision/twod/index.htm#code
-    // Also returns resulting velocity of ball after collision
+    // Tried to math out what the resulting velocity would be but couldn't get it to work reliably
+    // Look at these sources:
+    // https://www.euclideanspace.com/physics/dynamics/collision/twod/index.htm#code
+    // https://www.youtube.com/watch?v=guWIF87CmBg
+    // https://www.real-world-physics-problems.com/physics-of-billiards.html
+    //
+    // Instead probably just simulate it with an invisible ball and skip all this nonsense
+    // Alternatily raycast and reflect the vector for a good enough eyeball of the normal of the collision without considering mass/momenetum/etc
+    //
+    // Based on: https://ericleong.me/research/circle-circle/ and https://stackoverflow.com/questions/51905268/how-to-find-closest-point-on-line
     private Tuple<Vector2, Vector2> GetPositionAtTimeOfCollision(Ball otherBall, Vector2 initialVel, Vector2 velAroundTimeOfImpact)
     {
         Vector2 lhs = otherBall.transform.position - ball.transform.position;
