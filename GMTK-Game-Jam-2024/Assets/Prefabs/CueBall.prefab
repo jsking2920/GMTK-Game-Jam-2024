@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90eadcfdbc2a94176bba6fa94b900d00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSparkleSpeed: 5
+  maxSparkleSpeed: 25
 --- !u!198 &4181161811065415369
 ParticleSystem:
   m_ObjectHideFlags: 0

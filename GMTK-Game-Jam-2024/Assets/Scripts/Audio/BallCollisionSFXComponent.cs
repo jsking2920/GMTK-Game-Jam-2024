@@ -20,7 +20,7 @@ public class BallCollisionSFXComponent : MonoBehaviour
         float speed = collision.relativeVelocity.magnitude;
         float remappedSpeed = (speed - minCollisionSpeed) / (maxCollisionSpeed - minCollisionSpeed);
         Vector3 listenerPos = AudioManager.Instance.listener.attenuationObject.transform.position;
-        float distance = ((Vector3)contactPoint.point - listenerPos).magnitude;
+        float distance = (contactPoint.point - new Vector2(listenerPos.x, listenerPos.y)).magnitude;
         float attn = Mathf.Pow(Mathf.Clamp01((maxDistFromCamera - distance) / maxDistFromCamera), 2);
         
         EventInstance sound = RuntimeManager.CreateInstance("event:/SFX/Collision");
