@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class BlackHole : MonoBehaviour
 {
+	[SerializeField] private CinemachineVirtualCamera bhCamera;
+	
 	private void OnTriggerEnter2D(Collider2D other)
 	{
         OrbitalBody body = other.GetComponent<OrbitalBody>();
@@ -26,11 +29,41 @@ public class BlackHole : MonoBehaviour
 
 	private void HandleBall(OrbitalBody body)
 	{
-		GameManager.Instance.OnBallSunk(body.gameObject.GetComponent<Ball>());
+		StartCoroutine(BlackHoleAnimation(body.gameObject.GetComponent<Ball>()));
 	}
 
 	private void HandleCueBall(OrbitalBody body)
 	{
         GameManager.Instance.OnCueBallSunk(body.gameObject.GetComponent<Ball>());
     }
+
+	private IEnumerator BlackHoleAnimation(Ball ball)
+	{
+		float shrinkTime = 1.8f;
+		
+		bhCamera.enabled = true;
+		Time.timeScale = 0.05f;
+		yield return new WaitForSecondsRealtime(0.45f);
+		FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/BlackHole");
+
+		Vector3 startingScale = ball.transform.localScale;
+		Vector3 startingPos = ball.transform.position;
+		Vector3 endingScale = new Vector3(0.0f, 0.0f);
+		Vector3 endingPos = transform.position;
+		
+		
+		for (float t = 0; t < shrinkTime;)
+		{
+			ball.transform.localScale = EasingFunction.EaseVector(startingScale, endingScale, t / shrinkTime, 
+				EasingFunction.Ease.EaseInBack);
+			ball.transform.position = EasingFunction.EaseVector(startingPos, endingPos, t / shrinkTime, 
+				EasingFunction.Ease.EaseInBack);
+			t += Time.unscaledDeltaTime;
+			yield return null;
+		}
+
+		bhCamera.enabled = false;
+		Time.timeScale = 1;
+		GameManager.Instance.OnBallSunk(ball);
+	}
 }
