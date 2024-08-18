@@ -216,6 +216,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8409277755035816823, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7452015121082366677}
+    - targetCorrespondingSourceObject: {fileID: 8409277755035816823, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2861894506332004981}
   m_SourcePrefab: {fileID: 100100000, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
 --- !u!4 &4851297543041329569 stripped
 Transform:
@@ -5037,3 +5040,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2861894506332004981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8215310156588020665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1239a6151bd2d95469d4ab7e41452754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsAttractor: 0
+  IsAttractee: 0
+  _initVelocityType: 0
+  _initVelocity: {x: 0, y: 0}
+  _initialOrbits: []

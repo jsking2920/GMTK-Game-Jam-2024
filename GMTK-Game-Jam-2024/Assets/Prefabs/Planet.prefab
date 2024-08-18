@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0a699f8d0d1532f4e9faad031cb9598a, type: 2}
     - target: {fileID: 8409277755035816823, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
       propertyPath: m_Name
-      value: PlanetBall Variant
+      value: Planet
       objectReference: {fileID: 0}
     - target: {fileID: 9193239607396655110, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
       propertyPath: sprite
@@ -94,10 +94,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsAttractor: 0
   IsAttractee: 1
-  _initVelocityType: 1
+  _initVelocityType: 0
   _initVelocity: {x: 0, y: 0}
-  _initialOrbits:
-  - {fileID: 0}
+  _initialOrbits: []
 --- !u!96 &2314290846902277713
 TrailRenderer:
   serializedVersion: 3
