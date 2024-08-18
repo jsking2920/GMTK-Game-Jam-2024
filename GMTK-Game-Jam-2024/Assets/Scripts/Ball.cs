@@ -112,6 +112,8 @@ public class Ball : MonoBehaviour
 
             // Can't shoot ball again until it comes to a rest
             isShootable = false;
+            
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Shoot");
         }
     }
     #endregion

@@ -12,7 +12,7 @@ public class BallCollisionSFXComponent : MonoBehaviour
 {
     public static float minCollisionSpeed = 0;
     public static float maxCollisionSpeed = 25;
-    public static float maxDistFromCamera = 10;
+    public static float maxDistFromCamera = 15;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
