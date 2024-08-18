@@ -25,8 +25,6 @@ public class Ball : MonoBehaviour
 
     // Is this ball shootable by the player
     public bool isCueBall = true; 
-    // Can this ball be shot right now
-    private bool isShootable = false;
 
     public float radius = 0.5f;
 
@@ -41,7 +39,6 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         lineRenderer.enabled = false;
-        isShootable = false;
         currentForceDir = Vector2.zero;
         currentForceMagnitude = 0.0f;
 
@@ -58,12 +55,6 @@ public class Ball : MonoBehaviour
         if (rb.velocity.magnitude < minVel)
         {
             rb.velocity = Vector2.zero;
-
-            if (isCueBall && !isShootable)
-            {
-                // Cueball has come to rest, make it shootable again
-                isShootable = true;
-            }
         }
     }
 
@@ -121,12 +112,11 @@ public class Ball : MonoBehaviour
 
             currentForceMagnitude = 0.0f;
             currentForceDir = Vector2.zero;
-
-            // Can't shoot ball again until it comes to a rest
-            isShootable = false;
             
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Shoot");
             chargeUpSFX.setParameterByName("ChargePercent", 0);
+
+            GameManager.Instance.OnPlayerShot(this);
         }
     }
     #endregion
