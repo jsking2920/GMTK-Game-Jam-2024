@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
-using static UnityEngine.UI.Image;
 
 public class TrajectoryRenderer : MonoBehaviour
 {
@@ -16,8 +14,11 @@ public class TrajectoryRenderer : MonoBehaviour
 
     private Transform[] dotsList;
     private int maxDots = 50; // simulationStep * max dots == max simulated time
+    private Transform[] secondaryDotsList;
+    private int maxDotsDrawnAfterCollision = 3;
+    
     private float dotRadius = 0.25f; // Used to prevent dot's from being drawn overlapping
-
+    
     private GameObject collisionSprite;
 
     private void Start()
@@ -30,11 +31,17 @@ public class TrajectoryRenderer : MonoBehaviour
     private void PrepareDots()
     {
         dotsList = new Transform[maxDots];
+        secondaryDotsList = new Transform[maxDotsDrawnAfterCollision];
 
         for (int i = 0; i < maxDots; i++)
         {
             dotsList[i] = Instantiate(dotPrefab, dotsParent.transform).transform;
             dotsList[i].gameObject.SetActive(false);
+        }
+        for (int j = 0; j < maxDotsDrawnAfterCollision; j++)
+        {
+            secondaryDotsList[j] = Instantiate(dotPrefab, dotsParent.transform).transform;
+            secondaryDotsList[j].gameObject.SetActive(false);
         }
 
         collisionSprite = Instantiate(collisionCircleSpritePrefab, dotsParent.transform);
@@ -56,7 +63,7 @@ public class TrajectoryRenderer : MonoBehaviour
 
             // Check for collision
             bool foundCollision = false;
-            Collider2D[] results = Physics2D.OverlapCircleAll(nextSimulatedPos, ball.radius); // Make this check a bit fuzzier to account for simulation step
+            Collider2D[] results = Physics2D.OverlapCircleAll(nextSimulatedPos, ball.radius); // TODO: Make this check a bit fuzzier to account for simulation step
 
             foreach (Collider2D collisionResult in results)
             {
@@ -67,14 +74,17 @@ public class TrajectoryRenderer : MonoBehaviour
                     if (otherBall != null)
                     {
                         // Find point of collision between the two circles. Draw circle at that point of contact
-                        Tuple<bool, Vector2> doCirclesCollide = GetPositionAtTimeOfCollision(otherBall, forceDir * initialVel);
+                        Tuple<Vector2, Vector2> collisionPositionAndVel = GetPositionAtTimeOfCollision(otherBall, forceDir * initialVel, curSimulatedVel);
 
-                        if (doCirclesCollide.Item1)
+                        if (collisionPositionAndVel != null)
                         {
-                            collisionSprite.transform.position = doCirclesCollide.Item2;
+                            collisionSprite.transform.position = collisionPositionAndVel.Item1;
                             collisionSprite.transform.localScale = new Vector3(ball.radius * 2.0f, ball.radius * 2.0f, 1.0f);
                             collisionSprite.SetActive(true);
                             foundCollision = true;
+
+                            // // Draw short path after collision
+                            DrawSecondaryPath(collisionPositionAndVel.Item1, collisionPositionAndVel.Item2);
                             // TODO: Add line for otherBall
                         }
                     }
@@ -86,7 +96,6 @@ public class TrajectoryRenderer : MonoBehaviour
                         collisionSprite.SetActive(true);
                         foundCollision = true;
                     }
-                    // TODO: update velocity after collision and simulate only a little further
 
                     // Only consider the first collision
                     if (foundCollision)
@@ -104,6 +113,7 @@ public class TrajectoryRenderer : MonoBehaviour
             else
             {
                 collisionSprite.SetActive(false);
+                DisableSecondaryDots();
             }
 
             // If we've traveled far enough for a dot, draw a new one
@@ -127,6 +137,49 @@ public class TrajectoryRenderer : MonoBehaviour
         }
     }
 
+    // Draws short trajectory path after collision, ignores any further collision
+    public void DrawSecondaryPath(Vector2 startPos, Vector2 initialVel)
+    {
+        Vector2 curSimulatedVel = initialVel;
+        Vector2 curSimulatedPos = startPos;
+        int curDotIndex = 0;
+
+        Vector2 lastDotDrawnPos = curSimulatedPos;
+        Vector2 nextSimulatedPos;
+
+        while (curSimulatedVel.magnitude > ball.minVel && curDotIndex < dotsList.Length && curDotIndex < maxDotsDrawnAfterCollision)
+        {
+            nextSimulatedPos = curSimulatedPos + (curSimulatedVel * simulationStep);
+
+            // If we've traveled far enough for a dot, draw a new one
+            if ((curSimulatedPos - lastDotDrawnPos).magnitude > dotRadius)
+            {
+                secondaryDotsList[curDotIndex].position = nextSimulatedPos;
+                secondaryDotsList[curDotIndex].gameObject.SetActive(true);
+                curDotIndex += 1;
+                lastDotDrawnPos = nextSimulatedPos;
+            }
+
+            // Apply Drag
+            curSimulatedVel = curSimulatedVel * (1 - simulationStep * ball.rb.drag);
+            curSimulatedPos = nextSimulatedPos;
+        }
+
+        // Make sure any unneeded pooled dots are turned off
+        for (int i = curDotIndex; i < secondaryDotsList.Length; i++)
+        {
+            secondaryDotsList[i].gameObject.SetActive(false);
+        }
+    }
+
+    private void DisableSecondaryDots()
+    {
+        for (int i = 0; i < secondaryDotsList.Length; i++)
+        {
+            secondaryDotsList[i].gameObject.SetActive(false);
+        }
+    }
+
     public void ShowPath()
     {
         dotsParent.SetActive(true);
@@ -137,24 +190,34 @@ public class TrajectoryRenderer : MonoBehaviour
         dotsParent.SetActive(false);
     }
 
-    // Based on: https://ericleong.me/research/circle-circle/ and https://stackoverflow.com/questions/51905268/how-to-find-closest-point-on-line
-    private Tuple<bool, Vector2> GetPositionAtTimeOfCollision(Ball otherBall, Vector2 vel)
+    // Based on: https://ericleong.me/research/circle-circle/ and https://stackoverflow.com/questions/51905268/how-to-find-closest-point-on-line and https://www.euclideanspace.com/physics/dynamics/collision/twod/index.htm#code
+    // Also returns resulting velocity of ball after collision
+    private Tuple<Vector2, Vector2> GetPositionAtTimeOfCollision(Ball otherBall, Vector2 initialVel, Vector2 velAroundTimeOfImpact)
     {
         Vector2 lhs = otherBall.transform.position - ball.transform.position;
-        Vector2 closestPointOnLine = (Vector2)ball.transform.position + vel.normalized * Vector2.Dot(lhs, vel.normalized);
+        Vector2 closestPointOnLine = (Vector2)ball.transform.position + initialVel.normalized * Vector2.Dot(lhs, initialVel.normalized);
 
         float closestDistSq = Mathf.Pow(otherBall.transform.position.x - closestPointOnLine.x, 2) + Mathf.Pow(otherBall.transform.position.y - closestPointOnLine.y, 2);
 
         if (closestDistSq <= Mathf.Pow(ball.radius + otherBall.radius, 2))
         {
             float backdist = Mathf.Sqrt(Mathf.Pow(ball.radius + otherBall.radius, 2) - closestDistSq);
-            float movementVectorLength = Mathf.Sqrt(Mathf.Pow(vel.x, 2) + Mathf.Pow(vel.y, 2));
-            float x = closestPointOnLine.x - backdist * (vel.x / movementVectorLength);
-            float y = closestPointOnLine.y - backdist * (vel.y / movementVectorLength);
+            float movementVectorLength = Mathf.Sqrt(Mathf.Pow(initialVel.x, 2) + Mathf.Pow(initialVel.y, 2));
+            float x = closestPointOnLine.x - backdist * (initialVel.x / movementVectorLength);
+            float y = closestPointOnLine.y - backdist * (initialVel.y / movementVectorLength);
 
-            return new Tuple<bool, Vector2>(true, new Vector2(x, y));
+            // Figure out resulting velocity (assumes otherBall is static for simplicity, good enough)
+            Vector2 norm = ((Vector2)otherBall.transform.position - new Vector2(x, y)).normalized;
+            //float p = (2 * Vector2.Dot(velAroundTimeOfImpact, norm)) / (ball.rb.mass + otherBall.rb.mass);
+            //float vx = velAroundTimeOfImpact.x - p * ball.rb.mass * norm.x - p * otherBall.rb.mass * norm.x;
+            //float vy = velAroundTimeOfImpact.y - p * ball.rb.mass * norm.y - p * otherBall.rb.mass * norm.y;
+            //Vector2 v = velAroundTimeOfImpact - (p * ((ball.rb.mass * norm) - (otherBall.rb.mass * norm)));
+            Vector2 v = 2 * ((ball.rb.mass * otherBall.rb.mass) / (ball.rb.mass + otherBall.rb.mass)) 
+                * Vector2.Dot(velAroundTimeOfImpact - Vector2.zero, norm) * norm;
+
+            Tuple<Vector2, Vector2> res = new Tuple<Vector2, Vector2>(new Vector2(x, y), -v);
+            return res;
         }
-
-        return new Tuple<bool, Vector2>(false, Vector2.zero);
+        return null;
     }
 }
