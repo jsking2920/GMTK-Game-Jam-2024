@@ -14,11 +14,11 @@ public class Wormhole : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		var otherBody = other.GetComponent<OrbitalBody>();
-		if (otherBody != null && !OwningBody.IgnoredBodies.Contains(otherBody) 
+		if (otherBody != null && !OwningBody.IsBodyIgnored(otherBody) 
 							  && !ballsImTransportingRn.Contains(otherBody)
 							  && !_output.ballsImTransportingRn.Contains(otherBody))
 		{
-			_output.OwningBody.IgnoredBodies.Add(otherBody);
+			_output.OwningBody.StartIgnoringBody(otherBody);
 			
 			// Vector3 offset = otherBody.transform.position - transform.position;
 			// otherBody.transform.position = offset + _output.transform.position;

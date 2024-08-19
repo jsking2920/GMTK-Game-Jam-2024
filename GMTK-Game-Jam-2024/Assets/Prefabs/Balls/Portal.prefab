@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1999195074177931699}
   - component: {fileID: 2303560517763836759}
+  - component: {fileID: 7097699238174701893}
   m_Layer: 2
   m_Name: GravityField
   m_TagString: Untagged
@@ -67,6 +68,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.23
+--- !u!114 &7097699238174701893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3542353719127292525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aba6646b56fbac4ea046b1b9554e88f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5400292722943374102
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +333,10 @@ PrefabInstance:
       propertyPath: IsAttractor
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6779066560110901455, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
+      propertyPath: _smartGravityField
+      value: 
+      objectReference: {fileID: 7097699238174701893}
     - target: {fileID: 8409277755035816823, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
       propertyPath: m_Name
       value: Portal
