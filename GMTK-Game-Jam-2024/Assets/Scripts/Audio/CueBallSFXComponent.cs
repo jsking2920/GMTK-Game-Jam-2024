@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
+using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class CueBallSFXComponent : MonoBehaviour
 {
@@ -22,7 +24,14 @@ public class CueBallSFXComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float sparklePercent = Mathf.Clamp01(rb.velocity.magnitude / maxSparkleSpeed);
+        float sparklePercent = Mathf.Clamp01((rb.velocity.magnitude * Time.timeScale) / maxSparkleSpeed);
         sparkle.setParameterByName("SparklePercent", sparklePercent);
+    }
+
+    private void OnDestroy()
+    {
+        sparkle.setParameterByName("SparklePercent", 0);
+        sparkle.stop(STOP_MODE.ALLOWFADEOUT);
+        sparkle.release();
     }
 }
