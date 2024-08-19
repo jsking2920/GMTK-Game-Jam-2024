@@ -251,7 +251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6779066560110901455, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
       propertyPath: _neutronLockDistance
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6929002043888264915, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
       propertyPath: m_IsActive

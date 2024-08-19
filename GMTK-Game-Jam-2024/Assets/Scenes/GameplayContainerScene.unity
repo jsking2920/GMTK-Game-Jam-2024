@@ -906,7 +906,13 @@ MonoBehaviour:
     oneStarThreshold: 100
     twoStarThreshold: 100
     threeStarThreshold: 100
-  defaultLevelIndex: 3
+  - levelName: Level 5
+    sceneBuildIndex: 5
+    totalBallsToSink: 100
+    oneStarThreshold: 100
+    twoStarThreshold: 100
+    threeStarThreshold: 100
+  defaultLevelIndex: 4
 --- !u!4 &766153513
 Transform:
   m_ObjectHideFlags: 0
@@ -1714,7 +1720,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51.45
+  m_fontSize: 40.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
