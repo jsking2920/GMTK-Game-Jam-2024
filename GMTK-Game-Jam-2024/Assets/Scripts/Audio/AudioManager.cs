@@ -18,14 +18,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
 }

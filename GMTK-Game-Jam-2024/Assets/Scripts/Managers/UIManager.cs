@@ -18,7 +18,15 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
     private void Start()
@@ -55,7 +63,7 @@ public class UIManager : MonoBehaviour
 
     public void btn_Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameManager.Instance.RestartLevel();
     }
 
     public void btn_Quit()

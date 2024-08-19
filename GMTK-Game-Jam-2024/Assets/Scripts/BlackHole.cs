@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
-using Debug = FMOD.Debug;
 
 public class BlackHole : MonoBehaviour
 {

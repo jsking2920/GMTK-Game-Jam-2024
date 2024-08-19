@@ -124,11 +124,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5035624675093465455}
   - component: {fileID: 3590819707683539526}
+  - component: {fileID: 6779066560110901455}
   - component: {fileID: 4130302729824589955}
+  - component: {fileID: 5932405977679721513}
   - component: {fileID: 2843669237656591144}
   - component: {fileID: 2703137693008409734}
   - component: {fileID: 3355351067224687450}
-  - component: {fileID: 5932405977679721513}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Ball
@@ -165,13 +166,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34eb60f2b700ef442b2e30591b8fe58a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCam: {fileID: 0}
   rb: {fileID: 0}
   maxPullBackDist: 4
   maxForceMagnitude: 25
   minVel: 0.3
   isCueBall: 0
   radius: 0.5
+--- !u!114 &6779066560110901455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8409277755035816823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1239a6151bd2d95469d4ab7e41452754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsAttractor: 0
+  IsAttractee: 1
+  _initVelocityType: 0
+  _initVelocity: {x: 0, y: 0}
+  _initialOrbits: []
 --- !u!114 &4130302729824589955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +204,18 @@ MonoBehaviour:
   dotsParent: {fileID: 718735151719625248}
   dotPrefab: {fileID: 3875129478360219338, guid: c25a7cb7dba3eb1479750cfd07d722f8, type: 3}
   collisionCircleSpritePrefab: {fileID: 8667352218137878829, guid: 6037250c54e641242a4a8db8bfb2e1fd, type: 3}
+--- !u!114 &5932405977679721513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8409277755035816823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c79d5a041e26b47dd85a847ef130a8cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &2843669237656591144
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -362,15 +391,3 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &5932405977679721513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8409277755035816823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c79d5a041e26b47dd85a847ef130a8cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
