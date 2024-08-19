@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{053e2d10-e70b-472e-8f2c-f41546a24e5a}">
+		<property name="assetPath">
+			<value>silence.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>8</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.224</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{51d68115-cf2e-40ee-9247-350979f126bd}</destination>
+		</relationship>
+	</object>
+</objects>
