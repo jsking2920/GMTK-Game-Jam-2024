@@ -179,9 +179,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8409277755035816823, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5111975705504870233}
-    - targetCorrespondingSourceObject: {fileID: 8409277755035816823, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2314290846902277713}
     - targetCorrespondingSourceObject: {fileID: 8409277755035816823, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
       insertIndex: -1
@@ -197,23 +194,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8409277755035816823, guid: 9c484c37f116b9f48b30a381c0dec396, type: 3}
   m_PrefabInstance: {fileID: 6568153499715418545}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5111975705504870233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3428652595454388934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1239a6151bd2d95469d4ab7e41452754, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsAttractor: 0
-  IsAttractee: 0
-  _initVelocityType: 0
-  _initVelocity: {x: 0, y: 0}
-  _initialOrbits: []
 --- !u!96 &2314290846902277713
 TrailRenderer:
   serializedVersion: 3
