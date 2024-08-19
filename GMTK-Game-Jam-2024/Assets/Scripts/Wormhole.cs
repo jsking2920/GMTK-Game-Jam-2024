@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Wormhole : MonoBehaviour
 {
+	public AnimationController AnimationController;
 	[SerializeField] private Wormhole _output;
 
 	public OrbitalBody OwningBody;
@@ -14,7 +15,8 @@ public class Wormhole : MonoBehaviour
 	{
 		var otherBody = other.GetComponent<OrbitalBody>();
 		if (otherBody != null && !OwningBody.IgnoredBodies.Contains(otherBody) 
-		                      && !ballsImTransportingRn.Contains(otherBody))
+							  && !ballsImTransportingRn.Contains(otherBody)
+							  && !_output.ballsImTransportingRn.Contains(otherBody))
 		{
 			_output.OwningBody.IgnoredBodies.Add(otherBody);
 			
@@ -27,7 +29,7 @@ public class Wormhole : MonoBehaviour
 
 	private IEnumerator WormholeEat(OrbitalBody otherBody)
 	{
-		//TODO: trigger face animation
+		AnimationController.startEat();
 		AudioManager.PlaySpatializedSFX("event:/SFX/Wormhole", otherBody.transform.position);
 
 		Vector3 originalScale = otherBody.transform.localScale;
@@ -50,8 +52,7 @@ public class Wormhole : MonoBehaviour
 				yield return null;
 			}
 		}
-		Vector3 offset = otherBody.transform.position - transform.position;
-		otherBody.transform.position = offset + _output.transform.position;
+		otherBody.transform.position = _output.transform.position;
 		otherBody.gameObject.SetActive(false);
 
 		//delay
@@ -60,6 +61,7 @@ public class Wormhole : MonoBehaviour
 		//exit
 		{
 			//teleport
+			_output.AnimationController.startSpit();
 			otherBody.gameObject.SetActive(true);
 			otherBody.body.velocity = originalVelocity * 0.75f; //prevent launch from gravity
 			
