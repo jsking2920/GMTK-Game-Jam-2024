@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
         curLevelIndex = defaultLevelIndex;
         shotsTaken = 0;
         ballsSunk = 0;
+        MusicManager.Instance.playBackgroundTrack();
     }
 
     private void LoadNewLevel(int levelIndex)
@@ -64,7 +65,7 @@ public class GameManager : MonoBehaviour
 
         if (ballsSunk >= levels[curLevelIndex].totalBallsToSink)
         {
-            LoadNewLevel(curLevelIndex + 1 >= levels.Length ? curLevelIndex : 0);
+            LoadNewLevel(curLevelIndex + 1 >= levels.Length ? 0 : curLevelIndex);
         }
     }
 
