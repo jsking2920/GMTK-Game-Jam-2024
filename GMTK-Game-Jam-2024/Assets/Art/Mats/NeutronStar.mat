@@ -37,9 +37,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _CenterEmissive: 2
+    - _PulseEmissive1: 1
+    - _PulseEmissive2: 1
+    - _PulseOpacity: 0.24
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors: []
+    m_Colors:
+    - _CenterColor: {r: 0.6683018, g: 0.95471686, b: 0.8879786, a: 0}
+    - _PulseColor1: {r: 0, g: 0.30022573, b: 0.7509433, a: 0}
+    - _PulseColor2: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &170300137841584943
 MonoBehaviour:
