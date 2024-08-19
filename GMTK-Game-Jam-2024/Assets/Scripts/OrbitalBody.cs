@@ -23,9 +23,11 @@ public class OrbitalBody : MonoBehaviour
 
 	public HashSet<OrbitalBody> IgnoredBodies = new();
 
+	[Header("Neutron Star Only Fields")]
 	[SerializeField] private bool _isNeutronStar = false;
 	[SerializeField] private float _neutronLockDistance = 0.01F;
 	public bool IsLocked = false;
+	[SerializeField] private float _unlockDelay = 0.3F;
 
 	private Rigidbody2D _body;
 	public Rigidbody2D body
@@ -50,25 +52,32 @@ public class OrbitalBody : MonoBehaviour
 			return;
 		}
 		var otherOrbitalBody = other.GetComponent<OrbitalBody>();
-		if (otherOrbitalBody != null && otherOrbitalBody.IsAttractee && !IgnoredBodies.Contains(otherOrbitalBody))
-		{
-			ApplyGravityTo(otherOrbitalBody);
-		}
 
 		if (_isNeutronStar)
 		{
 			if (!otherOrbitalBody.IsLocked && Vector3.Distance(other.gameObject.transform.position, transform.position) < _neutronLockDistance)
 			{
 				other.gameObject.transform.position = transform.position;
-				other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 				otherOrbitalBody.IsLocked = true;
+				other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 			}
 
-			if (Vector3.Distance(other.gameObject.transform.position, transform.position) > _neutronLockDistance)
+			if (Vector3.Distance(other.gameObject.transform.position, transform.position) >= _neutronLockDistance)
 			{
-				otherOrbitalBody.IsLocked = false;
+				StartCoroutine(UnlockPlanet(otherOrbitalBody));
 			}
 		}
+
+		if (otherOrbitalBody != null && otherOrbitalBody.IsAttractee && !IgnoredBodies.Contains(otherOrbitalBody) && !otherOrbitalBody.IsLocked)
+		{
+			ApplyGravityTo(otherOrbitalBody);
+		}
+	}
+
+	IEnumerator UnlockPlanet(OrbitalBody other)
+	{
+		yield return new WaitForSeconds(_unlockDelay);
+		other.IsLocked = false;
 	}
 
 	//this is for wormholes, when object TPs we temporarily ignore gravity from destination wormhole
