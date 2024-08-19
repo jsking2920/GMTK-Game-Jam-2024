@@ -63,6 +63,11 @@ public class OrbitalBody : MonoBehaviour
 				other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 				otherOrbitalBody.IsLocked = true;
 			}
+
+			if (Vector3.Distance(other.gameObject.transform.position, transform.position) > _neutronLockDistance)
+			{
+				otherOrbitalBody.IsLocked = false;
+			}
 		}
 	}
 
