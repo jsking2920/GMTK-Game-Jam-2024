@@ -23,6 +23,10 @@ public class OrbitalBody : MonoBehaviour
 
 	public HashSet<OrbitalBody> IgnoredBodies = new();
 
+	[SerializeField] private bool _isNeutronStar = false;
+	[SerializeField] private float _neutronLockDistance = 0.01F;
+	public bool IsLocked = false;
+
 	private Rigidbody2D _body;
 	public Rigidbody2D body
 	{
@@ -49,6 +53,16 @@ public class OrbitalBody : MonoBehaviour
 		if (otherOrbitalBody != null && otherOrbitalBody.IsAttractee && !IgnoredBodies.Contains(otherOrbitalBody))
 		{
 			ApplyGravityTo(otherOrbitalBody);
+		}
+
+		if (_isNeutronStar)
+		{
+			if (!otherOrbitalBody.IsLocked && Vector3.Distance(other.gameObject.transform.position, transform.position) < _neutronLockDistance)
+			{
+				other.gameObject.transform.position = transform.position;
+				other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+				otherOrbitalBody.IsLocked = true;
+			}
 		}
 	}
 
