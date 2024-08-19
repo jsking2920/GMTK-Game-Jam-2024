@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    [SerializeField] private Camera mainCam;
-
     private LineRenderer lineRenderer;
     private Transform t;
     private TrajectoryRenderer trajectoryPathRenderer;
@@ -132,7 +130,7 @@ public class Ball : MonoBehaviour
     #region Helpers
     private Vector3 GetMousePos()
     {
-        return mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -mainCam.transform.position.z));
+        return CameraManager.Instance.mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -CameraManager.Instance.mainCam.transform.position.z));
     }
 
     // Draws line between two points on XY plane with this ball's line renderer, ignoring z

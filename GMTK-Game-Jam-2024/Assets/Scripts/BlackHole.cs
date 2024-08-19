@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
-using Debug = FMOD.Debug;
 
 public class BlackHole : MonoBehaviour
 {
@@ -71,7 +70,7 @@ public class BlackHole : MonoBehaviour
 			yield break;
 		}
 
-		float shrinkTime = 1.8f;
+		float shrinkTime = 1.0f;
 		
 		bhCamera.enabled = true;
 		Time.timeScale = 0.05f;

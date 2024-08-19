@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{a757e00f-a2a7-4f9a-80b0-4e7874b31b30}">
+		<property name="assetPath">
+			<value>Music/Space_PrologueV3.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>49.568752834467119</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{51d68115-cf2e-40ee-9247-350979f126bd}</destination>
+		</relationship>
+	</object>
+</objects>
