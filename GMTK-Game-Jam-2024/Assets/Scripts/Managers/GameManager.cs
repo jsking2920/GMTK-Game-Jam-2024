@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
         curLevelIndex = defaultLevelIndex;
         shotsTaken = 0;
         ballsSunk = 0;
+        MusicManager.Instance.playBackgroundTrack();
     }
 
     private void LoadNewLevel(int levelIndex)

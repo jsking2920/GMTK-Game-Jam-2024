@@ -7,16 +7,26 @@ using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour
 {
+    public static MusicManager Instance;
+
     private Scene currScene;
     [SerializeField] private EventReference BackgroundTrack;
     private EventInstance backgroundTrack;
 
-    //private void awake()
-    //{
-    //    backgroundTrack = RuntimeManager.CreateInstance(BackgroundTrack);
-    //}
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
+    public void playBackgroundTrack()
     {
         backgroundTrack = RuntimeManager.CreateInstance(BackgroundTrack);
         currScene = SceneManager.GetActiveScene();
