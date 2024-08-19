@@ -782,7 +782,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665819587}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &665819591
 Transform:
   m_ObjectHideFlags: 0
@@ -793,7 +793,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.44, y: -11.389992, z: -37.03}
-  m_LocalScale: {x: 3.9001, y: 64.13254, z: 3.9001}
+  m_LocalScale: {x: 23.609394, y: 23.609394, z: 23.609394}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -1875,7 +1875,7 @@ GameObject:
   - component: {fileID: 2133136410}
   - component: {fileID: 2133136409}
   m_Layer: 0
-  m_Name: Worm (1)
+  m_Name: Gravity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1935,7 +1935,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: c98731bb589ea2c4a98a5b90bb834038, type: 3}
+  - {fileID: -876546973899608171, guid: eeca5bbfc8ae7468aa20ac219472ee57, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1975,7 +1975,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 28.44, y: -5, z: -7.52}
-  m_LocalScale: {x: 13.351007, y: 13.351007, z: 13.351007}
+  m_LocalScale: {x: 18.467113, y: 18.467113, z: 18.467113}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
