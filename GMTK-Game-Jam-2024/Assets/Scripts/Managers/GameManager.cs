@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
 
         if (ballsSunk >= levels[curLevelIndex].totalBallsToSink)
         {
-            LoadNewLevel(curLevelIndex + 1 >= levels.Length ? curLevelIndex : 0);
+            LoadNewLevel(curLevelIndex + 1 >= levels.Length ? 0 : curLevelIndex);
         }
     }
 
