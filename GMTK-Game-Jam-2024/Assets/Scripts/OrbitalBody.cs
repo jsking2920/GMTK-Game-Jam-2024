@@ -23,6 +23,7 @@ public class OrbitalBody : MonoBehaviour
 
 	//Optional param for wormholes and any orbital body that needs to ignore gravity for some objects temporarily
 	[SerializeField] private SmartGravityField _smartGravityField;
+	[SerializeField] private bool changeDragAfterCollision = false;
 
 	private Rigidbody2D _body;
 	public Rigidbody2D body
@@ -51,6 +52,12 @@ public class OrbitalBody : MonoBehaviour
 		{
 			ApplyGravityTo(otherOrbitalBody);
 		}
+	}
+
+	private void OnCollisionEnter2D(Collision2D other)
+	{
+		// dumb fix so orbiting bodies gain drag when knocked out. otherwise they will fly forever which we don't want
+		if (changeDragAfterCollision) body.drag = 0.4f;
 	}
 
 	public bool IsBodyIgnored(OrbitalBody other)
