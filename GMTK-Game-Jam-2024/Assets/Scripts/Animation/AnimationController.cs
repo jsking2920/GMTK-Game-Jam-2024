@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-    Camera targetCamera;
     [SerializeField] Transform AnimationTransform;
     float radius;
     Animator animator;
@@ -13,7 +12,6 @@ public class AnimationController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        targetCamera = Camera.main;
         animator = AnimationTransform.GetComponent<Animator>();
         radius = transform.GetComponent<Renderer>().bounds.extents.magnitude * 0.6f;
         
@@ -30,7 +28,7 @@ public class AnimationController : MonoBehaviour
     void MoveAnimationTowardCamera()
     {
         AnimationTransform.position = transform.position;
-        AnimationTransform.LookAt(targetCamera.transform);
+        AnimationTransform.LookAt(CameraManager.Instance.mainCam.transform);
         AnimationTransform.position += radius * AnimationTransform.forward;
     }
 

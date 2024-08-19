@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +13,8 @@ public class GameManager : MonoBehaviour
     private int shotsTaken = 0;
     private int ballsSunk = 0;
 
+    public int defaultLevelIndex = 0;
+
 
     private void Awake()
     {
@@ -25,16 +26,30 @@ public class GameManager : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(this);
         }
+    }
+
+    private void Start()
+    {
+        SceneManager.LoadScene(levels[defaultLevelIndex].sceneBuildIndex, LoadSceneMode.Additive);
+        curLevelIndex = defaultLevelIndex;
+        shotsTaken = 0;
+        ballsSunk = 0;
+        MusicManager.Instance.playBackgroundTrack();
     }
 
     private void LoadNewLevel(int levelIndex)
     {
-        SceneManager.LoadScene(levels[levelIndex].sceneBuildIndex);
+        SceneManager.UnloadSceneAsync(levels[curLevelIndex].sceneBuildIndex);
+        SceneManager.LoadScene(levels[levelIndex].sceneBuildIndex, LoadSceneMode.Additive);
         curLevelIndex = levelIndex;
         shotsTaken = 0;
         ballsSunk = 0;
+    }
+
+    public void RestartLevel()
+    {
+        LoadNewLevel(curLevelIndex);
     }
 
     public void OnPlayerShot(Ball cueBall)
@@ -50,7 +65,7 @@ public class GameManager : MonoBehaviour
 
         if (ballsSunk >= levels[curLevelIndex].totalBallsToSink)
         {
-            LoadNewLevel(curLevelIndex + 1 >= levels.Length ? curLevelIndex : 0);
+            LoadNewLevel(curLevelIndex + 1 >= levels.Length ? 0 : curLevelIndex + 1);
         }
     }
 
