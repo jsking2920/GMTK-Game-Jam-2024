@@ -108,6 +108,8 @@ public class Ball : MonoBehaviour
         if (isCueBall)
         {
             _animationController.EndAim();
+            //if not canceled
+            _animationController.StartMovement();
             lineRenderer.enabled = false;
             trajectoryPathRenderer.HidePath();
 
