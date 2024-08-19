@@ -229,7 +229,7 @@ Shader "SG_BlackHole"
             float4 _GrabbedTexture_TexelSize;
 
             // Graph Includes
-            #include "Assets/Shaders/SF_Raycast.hlsl"
+            #include "Assets/Art/Shader/SF_Raycast.hlsl"
 
             // -- Property used by ScenePickingPass
             #ifdef SCENEPICKINGPASS
@@ -2270,7 +2270,7 @@ Shader "SG_BlackHole"
                                                             float4 _GrabbedTexture_TexelSize;
 
                                                             // Graph Includes
-                                                            #include "Assets/Shaders/SF_Raycast.hlsl"
+                                                            #include "Assets/Art/Shader/SF_Raycast.hlsl"
 
                                                             // -- Property used by ScenePickingPass
                                                             #ifdef SCENEPICKINGPASS
