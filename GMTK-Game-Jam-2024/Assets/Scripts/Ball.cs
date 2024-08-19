@@ -25,13 +25,14 @@ public class Ball : MonoBehaviour
 
     // Is this ball shootable by the player
     public bool isCueBall = true; 
-    // Can this ball be shot right now
-    private bool isShootable = false;
 
     public float radius = 0.5f;
 
+    private AnimationController _animationController;
+
     private void Awake()
     {
+        _animationController = GetComponent<AnimationController>();
         lineRenderer = GetComponent<LineRenderer>();
         rb = GetComponent<Rigidbody2D>();
         t = transform;
@@ -41,7 +42,6 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         lineRenderer.enabled = false;
-        isShootable = false;
         currentForceDir = Vector2.zero;
         currentForceMagnitude = 0.0f;
 
@@ -55,29 +55,25 @@ public class Ball : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (rb.velocity.magnitude < minVel)
+        if (rb.velocity.magnitude > 0 && rb.velocity.magnitude < minVel)
         {
             rb.velocity = Vector2.zero;
-
-            if (isCueBall && !isShootable)
-            {
-                // Cueball has come to rest, make it shootable again
-                isShootable = true;
-            }
+            _animationController.EndMovement();
         }
     }
 
     #region Event Callbacks
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+	    _animationController.OnCollision();
     }
 
     private void OnMouseDown()
     {
         if (isCueBall)
         {
-            DrawLine(t.position, GetMousePos());
+	        _animationController.StartAim();
+			DrawLine(t.position, GetMousePos());
             lineRenderer.enabled = true;
 
             currentForceMagnitude = 0.0f;
@@ -94,7 +90,7 @@ public class Ball : MonoBehaviour
     {
         if (isCueBall)
         {
-            Vector3 mousePos = GetMousePos();
+	        Vector3 mousePos = GetMousePos();
             Vector2 pullBackVector = Vector2.ClampMagnitude(t.position - mousePos, maxPullBackDist);
 
             currentForceMagnitude = Mathf.Lerp(0.0f, maxForceMagnitude, Mathf.InverseLerp(0.0f, maxPullBackDist, pullBackVector.magnitude));
@@ -111,6 +107,9 @@ public class Ball : MonoBehaviour
     {
         if (isCueBall)
         {
+            _animationController.EndAim();
+            //if not canceled
+            _animationController.StartMovement();
             lineRenderer.enabled = false;
             trajectoryPathRenderer.HidePath();
 
@@ -121,12 +120,11 @@ public class Ball : MonoBehaviour
 
             currentForceMagnitude = 0.0f;
             currentForceDir = Vector2.zero;
-
-            // Can't shoot ball again until it comes to a rest
-            isShootable = false;
             
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Shoot");
             chargeUpSFX.setParameterByName("ChargePercent", 0);
+
+            GameManager.Instance.OnPlayerShot(this);
         }
     }
     #endregion

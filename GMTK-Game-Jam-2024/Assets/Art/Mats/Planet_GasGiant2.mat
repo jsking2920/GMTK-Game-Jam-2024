@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1954913139940716711
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Planet_GasGiant2
+  m_Shader: {fileID: -6465566751694194690, guid: 5b0ca5eda3a7eb940b7825b1512d3515, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _CloudDensity: 0.2
+    - _CloudDirectionality: 10
+    - _CloudMoveSpeed: 1
+    - _CloudNoiseDensity: 2
+    - _ColorStepCount: 5
+    - _FrenelPower: 0.75
+    - _OutlineThickness: 0.18
+    - _PlanetDirectionality: 20
+    - _PlanetMoveSpeed: 1
+    - _PoleBias: 0.05
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _SpecularOpacity: 1.26
+    - _SpecularSharpness: 3
+    m_Colors:
+    - _CloudColor: {r: 0, g: 0, b: 0, a: 0}
+    - _Color1: {r: 0.5999999, g: 0.34568962, b: 0, a: 1}
+    - _Color2: {r: 0.86415094, g: 0.33033076, b: 0.13532923, a: 1}
+    - _FrenelColor: {r: 0.6075471, g: 0.15100694, b: 0.15016729, a: 1}
+    - _OutlineColor: {r: 0.3283019, g: 0.20282024, b: 0.034069028, a: 0}
+    - _PoleColor: {r: 0.8867924, g: 0.6654047, b: 0.37312207, a: 0}
+    - _SpecularColor1: {r: 0.38867918, g: 0.38867918, b: 0.38867918, a: 0}
+    - _SpecularColor2: {r: 1, g: 0.62938, b: 0.4811319, a: 0}
+  m_BuildTextureStacks: []
