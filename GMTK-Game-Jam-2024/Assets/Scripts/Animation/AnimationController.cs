@@ -70,4 +70,13 @@ public class AnimationController : MonoBehaviour
     {
         animator.SetTrigger("endAim");
     }
+
+    public void startEat()
+    {
+        animator.SetTrigger("eat");
+    }
+    public void startSpit()
+    {
+        animator.SetTrigger("spit");
+    }
 }
