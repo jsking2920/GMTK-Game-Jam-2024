@@ -6,7 +6,7 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour
 {
     Camera targetCamera;
-    Transform AnimationTransform;
+    [SerializeField] Transform AnimationTransform;
     float radius;
     Animator animator;
 
@@ -14,7 +14,6 @@ public class AnimationController : MonoBehaviour
     void Start()
     {
         targetCamera = Camera.main;
-        AnimationTransform = transform.GetChild(0);
         animator = AnimationTransform.GetComponent<Animator>();
         radius = transform.GetComponent<Renderer>().bounds.extents.magnitude * 0.6f;
         
