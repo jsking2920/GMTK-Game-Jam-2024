@@ -392,7 +392,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 979232957609406480, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
       propertyPath: m_Mass
-      value: 20
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 979232957609406480, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
+      propertyPath: m_LinearDrag
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4775460106899495667, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
       propertyPath: m_Radius
@@ -1036,6 +1040,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 374592412001304958, guid: 4e72f0a569dd2b34eb9823cf8ee756dd, type: 3}
+      propertyPath: changeDragAfterCollision
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 374592412001304958, guid: 4e72f0a569dd2b34eb9823cf8ee756dd, type: 3}
       propertyPath: _initialOrbits.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1109,7 +1117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428652595454388934, guid: 4e72f0a569dd2b34eb9823cf8ee756dd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5111975705504870233, guid: 4e72f0a569dd2b34eb9823cf8ee756dd, type: 3}
       propertyPath: IsAttractee

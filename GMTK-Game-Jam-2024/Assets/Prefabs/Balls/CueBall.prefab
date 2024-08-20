@@ -128,7 +128,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4d62127caf5594c49b75599a3cb2fe5f, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -300,6 +300,12 @@ MonoBehaviour:
   _initVelocityType: 0
   _initVelocity: {x: 0, y: 0}
   _initialOrbits: []
+  _smartGravityField: {fileID: 0}
+  changeDragAfterCollision: 0
+  _isNeutronStar: 0
+  _neutronLockDistance: 0.01
+  IsLocked: 0
+  _unlockDelay: 0.3
 --- !u!114 &4602868952535808077
 MonoBehaviour:
   m_ObjectHideFlags: 0
