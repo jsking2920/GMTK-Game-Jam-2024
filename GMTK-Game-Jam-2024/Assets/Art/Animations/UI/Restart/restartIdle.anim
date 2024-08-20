@@ -22,22 +22,22 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 21300000, guid: 15cb2babac560de4bbda2bc33bbd3c9b, type: 3}
-    - time: 0.083333336
-      value: {fileID: 21300000, guid: fbf933aebbf030d4ea8a281bd92a6667, type: 3}
-    - time: 0.16666667
-      value: {fileID: 21300000, guid: ac76ce68fc087c841a278a14d2c2bc7d, type: 3}
-    - time: 0.25
-      value: {fileID: 21300000, guid: 7c970829d9ff69b4588032495a2d83c2, type: 3}
     - time: 0.33333334
+      value: {fileID: 21300000, guid: fbf933aebbf030d4ea8a281bd92a6667, type: 3}
+    - time: 0.6666667
+      value: {fileID: 21300000, guid: ac76ce68fc087c841a278a14d2c2bc7d, type: 3}
+    - time: 1
+      value: {fileID: 21300000, guid: 7c970829d9ff69b4588032495a2d83c2, type: 3}
+    - time: 1.3333334
       value: {fileID: 21300000, guid: 63e007b2bc6d9da40a04d0ab750768b0, type: 3}
-    - time: 0.41666666
+    - time: 1.6666666
       value: {fileID: 21300000, guid: 005ecdb6ba5617243a89fe8c3d532a6f, type: 3}
     attribute: m_Sprite
     path: 
-    classID: 212
-    script: {fileID: 0}
+    classID: 114
+    script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
     flags: 2
-  m_SampleRate: 12
+  m_SampleRate: 3
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -46,10 +46,10 @@ AnimationClip:
     genericBindings:
     - serializedVersion: 2
       path: 0
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
+      attribute: 2015549526
+      script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+      typeID: 114
+      customType: 0
       isPPtrCurve: 1
       isIntCurve: 0
       isSerializeReferenceCurve: 0
@@ -65,7 +65,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 2
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

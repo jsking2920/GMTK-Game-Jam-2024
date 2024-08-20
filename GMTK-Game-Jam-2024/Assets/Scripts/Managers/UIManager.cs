@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button settingsButton;
 
     [SerializeField] private TextMeshProUGUI shotCountText;
-
+    bool isSettingsOpen = false;
     private void Awake()
     {
         if (Instance != null)
@@ -58,6 +58,9 @@ public class UIManager : MonoBehaviour
         settingsButton.onClick.RemoveAllListeners();
         settingsButton.onClick.AddListener(btn_Settings);
 
+        homeButton.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(false);
+
         shotCountText.text = "Shots: 0";
         MainUICanvas.SetActive(false);
     }
@@ -90,7 +93,12 @@ public class UIManager : MonoBehaviour
 
     public void btn_Settings()
     {
-        // TODO
+        isSettingsOpen = !isSettingsOpen;
+
+        restartButton.gameObject.SetActive(isSettingsOpen);
+        homeButton.gameObject.SetActive(isSettingsOpen);
+        if (isSettingsOpen) settingsButton.targetGraphic.color = Color.gray;
+        else settingsButton.targetGraphic.color = Color.white;
     }
 
     public void SetMainMenuActive(bool active)
