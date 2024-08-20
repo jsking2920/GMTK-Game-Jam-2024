@@ -44,6 +44,7 @@ Material:
     - _CloudMoveSpeed: 0.2
     - _CloudNoiseDensity: 4
     - _ColorStepCount: 3
+    - _Emissive: 4.12
     - _FrenelPower: 1
     - _OutlineThickness: 0.39
     - _PlanetDirectionality: 10
@@ -55,7 +56,7 @@ Material:
     - _SpecularSharpness: 3
     - _WormHoleDistortion: 50
     m_Colors:
-    - _BorderColor1: {r: 0.4566037, g: 0.09562833, b: 0.34023535, a: 0}
+    - _BorderColor1: {r: 0.08419358, g: 0.5937388, b: 0.8113208, a: 0}
     - _BorderColor2: {r: 0.99449414, g: 1, b: 0.9415095, a: 0}
     - _CloudColor: {r: 0.14117646, g: 0.7292121, b: 0.9098039, a: 0}
     - _CloudColor2: {r: 0.7735849, g: 0.34290037, b: 0.10363119, a: 1}
@@ -66,8 +67,8 @@ Material:
     - _PoleColor: {r: 0.76094687, g: 0.8490566, b: 0.8145789, a: 0}
     - _SpecularColor1: {r: 0.33657756, g: 0.11472406, b: 0.49433953, a: 0}
     - _SpecularColor2: {r: 0.8566037, g: 0.8137726, b: 0.5026485, a: 0}
-    - _SwirlColor1: {r: 0.6075471, g: 0.103887066, b: 0, a: 0}
-    - _SwirlColor2: {r: 0.10786283, g: 1, b: 0, a: 0}
+    - _SwirlColor1: {r: 0.3779034, g: 0.078241326, b: 0.4188679, a: 0}
+    - _SwirlColor2: {r: 0, g: 0.90551186, b: 1, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3990714283710735556
 MonoBehaviour:
