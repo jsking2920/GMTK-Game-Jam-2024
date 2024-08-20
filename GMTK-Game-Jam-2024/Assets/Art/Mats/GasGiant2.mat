@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: GasGiant2
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 5b0ca5eda3a7eb940b7825b1512d3515, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -17,8 +17,7 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
+  stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -89,6 +88,11 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _CloudDensity: 0.01
+    - _CloudDirectionality: 10
+    - _CloudMoveSpeed: 0.05
+    - _CloudNoiseDensity: 2.5
+    - _ColorStepCount: 3
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -96,17 +100,25 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
+    - _FrenelPower: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
+    - _OutlineThickness: 0.39
     - _Parallax: 0.005
+    - _PlanetDirectionality: 10
+    - _PlanetMoveSpeed: 0.19
+    - _PoleBias: 0.2
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _SpecularOpacity: 0.5
+    - _SpecularSharpness: 3
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
@@ -114,9 +126,17 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _CloudColor: {r: 0.26792446, g: 0.23259595, b: 0.16328228, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color1: {r: 0.9245283, g: 0.5493983, b: 0.030526895, a: 1}
+    - _Color2: {r: 1, g: 0.26666665, b: 0.11792451, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FrenelColor: {r: 0.32941177, g: 0.18191601, b: 0.14509805, a: 1}
+    - _OutlineColor: {r: 0.6603774, g: 0.40314996, b: 0.19001423, a: 0}
+    - _PoleColor: {r: 1, g: 0.78079355, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SpecularColor1: {r: 1, g: 0.19339621, b: 0.19339621, a: 0}
+    - _SpecularColor2: {r: 1, g: 0.62938, b: 0.4811319, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5199851460835057271
 MonoBehaviour:
