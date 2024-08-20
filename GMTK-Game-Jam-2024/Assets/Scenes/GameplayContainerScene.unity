@@ -219,6 +219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f8eca04a6ebcd428c635568a7117d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenu: {fileID: 1966568799}
+  MainUICanvas: {fileID: 503926778}
+  mainMenuStartButton: {fileID: 1966568800}
   quitButton: {fileID: 1194870178}
   restartButton: {fileID: 1735910585}
   levelsButton: {fileID: 617536817}
@@ -507,7 +510,7 @@ GameObject:
   - component: {fileID: 503926780}
   - component: {fileID: 503926779}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MainUICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -881,6 +884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5ef98bde84c714ca7496feb9d3f09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: 0
   levels:
   - levelName: Level 1
     sceneBuildIndex: 1
@@ -1573,6 +1577,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735910583}
   m_CullTransparentMesh: 1
+--- !u!1001 &1966568798
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1201843844191490826, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.6366334
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201843844191490826, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.8570924
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201843844191490826, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.257723
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201843844191490826, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201843844191490826, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201843844191490826, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201843844191490826, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201843844191490826, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201843844191490826, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201843844191490826, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438237461633493619, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+      propertyPath: m_Name
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194480322135310897, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+      propertyPath: m_BlockingObjects
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 8089980408315433221, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+--- !u!1 &1966568799 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4438237461633493619, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+  m_PrefabInstance: {fileID: 1966568798}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1966568800 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3389891563180791627, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+  m_PrefabInstance: {fileID: 1966568798}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2039609496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,7 +1790,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 29.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1800,8 +1882,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6726718388368910255}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -15}
+  m_LocalRotation: {x: 0.37439224, y: 0.6143153, z: 0.4269137, w: 0.5478977}
+  m_LocalPosition: {x: 4.7276335, y: 2.3380923, z: 0.4792769}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1990,15 +2072,33 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
-    m_Style: 1
-    m_Time: 0.5
+    m_Style: 5
+    m_Time: 0.8
     m_CustomCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
+  m_CustomBlends: {fileID: 11400000, guid: fd20ddf58cfae4f1e96746ea8c63e619, type: 2}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -2055,11 +2155,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 100
-  field of view: 60.000004
+  near clip plane: 0.1
+  far clip plane: 5000
+  field of view: 60
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2161,3 +2261,4 @@ SceneRoots:
   - {fileID: 1198321107}
   - {fileID: 97583821}
   - {fileID: 2039609498}
+  - {fileID: 1966568798}

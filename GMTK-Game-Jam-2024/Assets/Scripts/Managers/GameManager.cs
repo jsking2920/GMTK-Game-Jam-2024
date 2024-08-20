@@ -7,6 +7,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public enum GameState
+    {
+        MainMenu,
+        Playing
+    }
+    public GameState gameState;
+
     [SerializeField] private Level[] levels;
     private int curLevelIndex = 0;
 
@@ -36,6 +43,20 @@ public class GameManager : MonoBehaviour
         shotsTaken = 0;
         ballsSunk = 0;
         MusicManager.Instance.playBackgroundTrack();
+
+        UIManager.Instance.SetMainMenuActive(true);
+        gameState = GameState.MainMenu;
+    }
+    
+    
+
+    public void StartGame()
+    {
+        curLevelIndex = defaultLevelIndex;
+        shotsTaken = 0;
+        ballsSunk = 0;
+        UIManager.Instance.SetMainMenuActive(false);
+        gameState = GameState.Playing;
     }
 
     private void LoadNewLevel(int levelIndex)
