@@ -126,7 +126,7 @@ public class TrajectoryRenderer : MonoBehaviour
             }
 
             // Apply Drag
-            curSimulatedVel = curSimulatedVel * (1 - simulationStep * ball.rb.drag);
+            curSimulatedVel = curSimulatedVel * (1 - simulationStep * ball.standardDrag);
             curSimulatedPos = nextSimulatedPos;
         }
 
