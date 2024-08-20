@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         curLevelIndex = defaultLevelIndex;
         shotsTaken = 0;
         ballsSunk = 0;
-        MusicManager.Instance.playBackgroundTrack();
+        MusicManager.Instance.loadBackgroundTrack();
 
         UIManager.Instance.SetMainMenuActive(true);
         gameState = GameState.MainMenu;
@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
         curLevelIndex = levelIndex;
         shotsTaken = 0;
         ballsSunk = 0;
+        MusicManager.Instance.changeBackgroundTrack(curLevelIndex);
     }
 
     public void RestartLevel()
