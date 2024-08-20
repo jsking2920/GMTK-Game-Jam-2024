@@ -28,7 +28,8 @@ public class AnimationController : MonoBehaviour
     void MoveAnimationTowardCamera()
     {
         AnimationTransform.position = transform.position;
-        AnimationTransform.LookAt(CameraManager.Instance.mainCam.transform);
+        AnimationTransform.LookAt(CameraManager.Instance.mainCam.transform,
+            CameraManager.Instance.mainCam.transform.up);
         AnimationTransform.position += radius * AnimationTransform.forward;
     }
 

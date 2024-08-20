@@ -28,7 +28,7 @@ public class AudioManager : MonoBehaviour
         
     }
 
-    public static void PlaySpatializedSFX(string path, Vector2 position, float maxDistFromCamera = 15)
+    public static void PlaySpatializedSFX(string path, Vector2 position, float maxDistFromCamera = 20)
     {
         
         Vector3 listenerPos = Instance.listener.attenuationObject.transform.position;
