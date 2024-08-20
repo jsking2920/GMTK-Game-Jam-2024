@@ -357,6 +357,8 @@ MonoBehaviour:
   _initVelocityType: 0
   _initVelocity: {x: 0, y: 0}
   _initialOrbits: []
+  _smartGravityField: {fileID: 0}
+  changeDragAfterCollision: 0
   _isNeutronStar: 0
   _neutronLockDistance: 0.01
   IsLocked: 0
@@ -706,6 +708,8 @@ MonoBehaviour:
   _initVelocityType: 0
   _initVelocity: {x: 0, y: 0}
   _initialOrbits: []
+  _smartGravityField: {fileID: 0}
+  changeDragAfterCollision: 0
   _isNeutronStar: 0
   _neutronLockDistance: 0.01
   IsLocked: 0
@@ -1419,6 +1423,8 @@ MonoBehaviour:
   _initVelocityType: 0
   _initVelocity: {x: 0, y: 0}
   _initialOrbits: []
+  _smartGravityField: {fileID: 0}
+  changeDragAfterCollision: 0
   _isNeutronStar: 0
   _neutronLockDistance: 0.01
   IsLocked: 0
@@ -1472,6 +1478,8 @@ MonoBehaviour:
   _initVelocityType: 0
   _initVelocity: {x: 0, y: 0}
   _initialOrbits: []
+  _smartGravityField: {fileID: 0}
+  changeDragAfterCollision: 0
   _isNeutronStar: 0
   _neutronLockDistance: 0.01
   IsLocked: 0
@@ -2133,6 +2141,8 @@ MonoBehaviour:
   _initVelocityType: 0
   _initVelocity: {x: 0, y: 0}
   _initialOrbits: []
+  _smartGravityField: {fileID: 0}
+  changeDragAfterCollision: 0
   _isNeutronStar: 0
   _neutronLockDistance: 0.01
   IsLocked: 0
@@ -2186,6 +2196,8 @@ MonoBehaviour:
   _initVelocityType: 0
   _initVelocity: {x: 0, y: 0}
   _initialOrbits: []
+  _smartGravityField: {fileID: 0}
+  changeDragAfterCollision: 0
   _isNeutronStar: 0
   _neutronLockDistance: 0.01
   IsLocked: 0
@@ -2447,7 +2459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8767781837452901392, guid: 390bcd6737a4f8246b06cd3f755f62cd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.24
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
