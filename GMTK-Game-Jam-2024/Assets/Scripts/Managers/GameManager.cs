@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     public int defaultLevelIndex = 0;
 
+    public UnityEvent OnFirstLevelStart;
 
     private void Awake()
     {
@@ -57,6 +59,13 @@ public class GameManager : MonoBehaviour
         ballsSunk = 0;
         UIManager.Instance.SetMainMenuActive(false);
         gameState = GameState.Playing;
+        StartCoroutine(WaitForMainMenuCameraMove());
+    }
+
+    private IEnumerator WaitForMainMenuCameraMove()
+    {
+	    yield return new WaitForSeconds(3);
+	    OnFirstLevelStart.Invoke();
     }
 
     private void LoadNewLevel(int levelIndex)

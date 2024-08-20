@@ -6,6 +6,8 @@ public class CueBall : Ball
 {
     public static CueBall Instance;
 
+    [SerializeField]
+    private ParticleSystem readyBurst;
     private LineRenderer lineRenderer;
 
     // Unit vector pointing in direction the ball is aiming
@@ -154,6 +156,7 @@ public class CueBall : Ball
             {
                 isMoving = false;
                 FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ReadyToShoot");
+                readyBurst.Play();
                 rb.velocity = Vector2.zero;
                 _animationController.EndMovement();
             }

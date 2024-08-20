@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button settingsButton;
 
     [SerializeField] private TextMeshProUGUI shotCountText;
-
+    bool isSettingsOpen = false;
     private void Awake()
     {
         if (Instance != null)
@@ -51,12 +51,17 @@ public class UIManager : MonoBehaviour
         
         mainMenuStartButton.onClick.RemoveAllListeners();
         mainMenuStartButton.onClick.AddListener(GameManager.Instance.StartGame);
+        mainMenuStartButton.onClick.AddListener(playSFX);
+        ;
 
         homeButton.onClick.RemoveAllListeners();
         homeButton.onClick.AddListener(btn_Home);
 
         settingsButton.onClick.RemoveAllListeners();
         settingsButton.onClick.AddListener(btn_Settings);
+
+        homeButton.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(false);
 
         shotCountText.text = "Shots: 0";
         MainUICanvas.SetActive(false);
@@ -67,15 +72,21 @@ public class UIManager : MonoBehaviour
         shotCountText.text = "Shots: " + shots.ToString();
     }
 
+    private void playSFX()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ButtonClick");
+    }
 
     public void btn_Levels()
     {
         // TODO
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ButtonClick");
     }
 
     public void btn_Restart()
     {
         GameManager.Instance.RestartLevel();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ButtonClick");
     }
 
     public void btn_Quit()
@@ -86,11 +97,18 @@ public class UIManager : MonoBehaviour
     public void btn_Home()
     {
         // TODO
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ButtonClick");
     }
 
     public void btn_Settings()
     {
-        // TODO
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ButtonClick");
+        isSettingsOpen = !isSettingsOpen;
+
+        restartButton.gameObject.SetActive(isSettingsOpen);
+        homeButton.gameObject.SetActive(isSettingsOpen);
+        if (isSettingsOpen) settingsButton.targetGraphic.color = Color.gray;
+        else settingsButton.targetGraphic.color = Color.white;
     }
 
     public void SetMainMenuActive(bool active)

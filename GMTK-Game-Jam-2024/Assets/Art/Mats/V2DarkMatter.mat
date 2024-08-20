@@ -37,8 +37,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _BubbleSize: 7.7
+    - _Fade: 1
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _SolidCenter: 0.79
     m_Colors:
     - _Color1: {r: 0.35958338, g: 0.14556777, b: 0.8867924, a: 0}
   m_BuildTextureStacks: []
