@@ -323,7 +323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &157346577
 Transform:
   m_ObjectHideFlags: 0
@@ -1026,6 +1026,7 @@ Transform:
   - {fileID: 4851297543977906335}
   - {fileID: 7924004041804261951}
   - {fileID: 2217148948171745418}
+  - {fileID: 2006421555}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &574468133
@@ -2902,6 +2903,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 6681090280449174877, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+      propertyPath: m_text
+      value: The Cosmos Are But A Pool Table To This Man
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681090280449174877, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681090280449174877, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178984535530684508, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 537.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178984535530684508, guid: 01769c38e14034ead9c07a26c2377e79, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -134
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2996,7 +3017,7 @@ GameObject:
   - component: {fileID: 2006421553}
   - component: {fileID: 2006421552}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: darkMatter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3081,12 +3102,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006421551}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.63, y: 4, z: -20.87}
-  m_LocalScale: {x: 5.0568686, y: 5.0568686, z: 5.0568686}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 19.5, y: 15.2, z: -8.8}
+  m_LocalScale: {x: 47, y: 36.306877, z: 34.814816}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 548157033}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2006824003
 GameObject:
@@ -4973,6 +4994,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackHoleModel
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc83ea7b0f5775e4c9267a0fb7c50d05, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -6088,4 +6113,3 @@ SceneRoots:
   - {fileID: 548157033}
   - {fileID: 2699952331800709324}
   - {fileID: 7875603928515328440}
-  - {fileID: 2006421555}
