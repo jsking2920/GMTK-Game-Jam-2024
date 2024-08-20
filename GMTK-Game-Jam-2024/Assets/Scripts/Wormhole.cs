@@ -72,7 +72,7 @@ public class Wormhole : MonoBehaviour
 			{
 				otherBody.transform.localScale = EasingFunction.EaseVector(startingScale, endingScale, t / growTime,
 					EasingFunction.Ease.EaseInCubic);
-				Debug.Log(t / growTime);
+				//Debug.Log(t / growTime);
 				t += Time.deltaTime;
 				yield return null;
 			}

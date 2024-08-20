@@ -52,7 +52,7 @@ public class Ball : MonoBehaviour
         else if (curSpeed <= minVel)
         {
             rb.velocity = Vector2.zero;
-            _animationController.EndMovement();
+            //_animationController.EndMovement();
         }
     }
 
