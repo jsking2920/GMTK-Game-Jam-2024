@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        MusicManager.Instance.loadBackgroundTrack();
         ToMenu();
     }
 
@@ -91,7 +92,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         levelEndScreen.SetActive(false);
 
-        MusicManager.Instance.loadBackgroundTrack();
+        MusicManager.Instance.changeBackgroundTrack(0);
         UIManager.Instance.SetMainMenuActive(true);
 
         gameState = GameState.MainMenu;
