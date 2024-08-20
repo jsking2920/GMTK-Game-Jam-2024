@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button restartButton;
     [SerializeField] private Button levelsButton;
     [SerializeField] private Button homeButton;
+    [SerializeField] private Button settingsButton;
 
     [SerializeField] private TextMeshProUGUI shotCountText;
 
@@ -54,6 +55,9 @@ public class UIManager : MonoBehaviour
         homeButton.onClick.RemoveAllListeners();
         homeButton.onClick.AddListener(btn_Home);
 
+        settingsButton.onClick.RemoveAllListeners();
+        settingsButton.onClick.AddListener(btn_Settings);
+
         shotCountText.text = "Shots: 0";
         MainUICanvas.SetActive(false);
     }
@@ -80,6 +84,11 @@ public class UIManager : MonoBehaviour
     }
 
     public void btn_Home()
+    {
+        // TODO
+    }
+
+    public void btn_Settings()
     {
         // TODO
     }
