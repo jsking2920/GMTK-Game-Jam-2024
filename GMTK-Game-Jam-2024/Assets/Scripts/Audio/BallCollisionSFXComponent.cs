@@ -11,7 +11,7 @@ public class BallCollisionSFXComponent : MonoBehaviour
 {
     public static float minCollisionSpeed = 0;
     public static float maxCollisionSpeed = 25;
-    public static float maxDistFromCamera = 15;
+    public static float maxDistFromCamera = 21;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -20,7 +20,7 @@ public class BallCollisionSFXComponent : MonoBehaviour
         float remappedSpeed = (speed - minCollisionSpeed) / (maxCollisionSpeed - minCollisionSpeed);
         Vector3 listenerPos = AudioManager.Instance.listener.attenuationObject.transform.position;
         float distance = (contactPoint.point - new Vector2(listenerPos.x, listenerPos.y)).magnitude;
-        float attn = Mathf.Pow(Mathf.Clamp01((maxDistFromCamera - distance) / maxDistFromCamera), 2);
+        float attn = Mathf.Pow(Mathf.Clamp01((maxDistFromCamera - distance) / maxDistFromCamera), 1.2f);
         
         EventInstance sound = RuntimeManager.CreateInstance("event:/SFX/Collision");
         sound.setParameterByName("ImpactSpeed", remappedSpeed);

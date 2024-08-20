@@ -25,23 +25,29 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-
-    public void playBackgroundTrack()
+    public void loadBackgroundTrack()
     {
         backgroundTrack = RuntimeManager.CreateInstance(BackgroundTrack);
-        currScene = SceneManager.GetActiveScene();
         backgroundTrack.start();
-        if (currScene.name == "Lv1 - Intro")
+    }
+
+
+    public void changeBackgroundTrack(int curLevelIndex)
+    {
+        //Debug.Log("is this called");
+        //currScene = SceneManager.GetActiveScene();
+        //Debug.Log("the current scene is " + currScene);
+        if (curLevelIndex == 0)
         {
             backgroundTrack.setParameterByNameWithLabel("State", "Level1", true);
             Debug.Log("Level 1 music start");
         }
-        else if (currScene.name == "Lv2 - Size")
+        else if (curLevelIndex == 1)
         {
             backgroundTrack.setParameterByNameWithLabel("State", "Level2", true);
             Debug.Log("Level 2 music start");
         }
-        else if (currScene.name == "Lv3 - Timing")
+        else if (curLevelIndex == 2)
         {
             backgroundTrack.setParameterByNameWithLabel("State", "Level3", true);
             Debug.Log("Level 3 music start");
