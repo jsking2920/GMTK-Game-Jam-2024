@@ -221,6 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainMenu: {fileID: 1966568799}
   MainUICanvas: {fileID: 503926778}
+  wallParent: {fileID: 253377599}
   mainMenuStartButton: {fileID: 1966568800}
   quitButton: {fileID: 1194870178}
   restartButton: {fileID: 1735910585}
@@ -257,7 +258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &253377600
 Transform:
   m_ObjectHideFlags: 0
@@ -1153,7 +1154,7 @@ MonoBehaviour:
     oneStarThreshold: 100
     twoStarThreshold: 100
     threeStarThreshold: 100
-  defaultLevelIndex: 0
+  defaultLevelIndex: 3
 --- !u!4 &766153513
 Transform:
   m_ObjectHideFlags: 0
@@ -2627,7 +2628,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51.5
+  m_fontSize: 66.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

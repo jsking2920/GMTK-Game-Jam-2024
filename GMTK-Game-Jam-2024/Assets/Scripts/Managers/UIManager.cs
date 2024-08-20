@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject MainMenu;
     [SerializeField] private GameObject MainUICanvas;
+    [SerializeField] private GameObject wallParent;
     
     [SerializeField] private Button mainMenuStartButton;
     
@@ -90,6 +91,7 @@ public class UIManager : MonoBehaviour
             camera.enabled = true;
             MainUICanvas.SetActive(false);
             MainMenu.SetActive(true);
+            wallParent.SetActive(false);
         }
         else
         {
@@ -98,6 +100,7 @@ public class UIManager : MonoBehaviour
             camera.enabled = false;
             MainUICanvas.SetActive(true);
             MainMenu.SetActive(false);
+            wallParent.SetActive(true);
         }
     }
 }
