@@ -49,15 +49,6 @@ public class CueBall : Ball
         chargeUpSFX.start();
     }
 
-    void FixedUpdate()
-    {
-        if (rb.velocity.magnitude > 0 && rb.velocity.magnitude < minVel)
-        {
-            rb.velocity = Vector2.zero;
-            _animationController.EndMovement();
-        }
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
 	    _animationController.OnCollision();

@@ -524,7 +524,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  minVel: 0.3
+  minVel: 0.2
+  highVelThreshold: 4.5
   radius: 0.5
 --- !u!114 &5898255664719743994
 MonoBehaviour:
@@ -598,7 +599,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 10
-  m_LinearDrag: 0.4
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 72651f50e7577d74080375e80564ce35, type: 2}

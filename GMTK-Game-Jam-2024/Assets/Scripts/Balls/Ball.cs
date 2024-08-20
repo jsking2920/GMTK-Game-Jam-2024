@@ -10,7 +10,11 @@ public class Ball : MonoBehaviour
     [HideInInspector] public Rigidbody2D rb;
  
     // Ball velocity gets clamped to zero below this threshold to shorten time to wait for next shot
-    public float minVel = 0.3f; // Make cue ball minVel a little higher
+    public float minVel = 0.5f;
+    // Ball velocity drops sharply below this threshold
+    [SerializeField] private float highVelThreshold = 6.0f;
+    // Linear drag applied at normal speed
+    private float standardDrag = 0.4f;
 
     public float radius = 0.5f;
 
@@ -26,7 +30,26 @@ public class Ball : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (rb.velocity.magnitude > 0 && rb.velocity.magnitude < minVel)
+        ApplyManualDrag();
+    }
+
+    private void ApplyManualDrag()
+    {
+        float curSpeed = rb.velocity.magnitude;
+
+        // normal 0.4 linear drag at speed
+        if (curSpeed > highVelThreshold)
+        {
+            rb.velocity = rb.velocity * (1.0f - Time.fixedDeltaTime * standardDrag);
+        }
+        // Increase drag as speed slows to make ball stop quicker
+        else if (curSpeed <= highVelThreshold && curSpeed > minVel)
+        {
+            float lerpedDrag = Mathf.Lerp(standardDrag, standardDrag * 6.0f, Mathf.InverseLerp(highVelThreshold, minVel, curSpeed));
+            rb.velocity = rb.velocity * (1.0f - Time.fixedDeltaTime * lerpedDrag);
+        }
+        // Clamp to zero
+        else if (curSpeed <= minVel)
         {
             rb.velocity = Vector2.zero;
             _animationController.EndMovement();
