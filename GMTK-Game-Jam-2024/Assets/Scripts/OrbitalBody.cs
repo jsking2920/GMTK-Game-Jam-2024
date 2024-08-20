@@ -25,13 +25,6 @@ public class OrbitalBody : MonoBehaviour
 	[SerializeField] private SmartGravityField _smartGravityField;
 	[SerializeField] private bool changeDragAfterCollision = false;
 
-	[Header("Neutron Star Only Fields")]
-	[SerializeField] private bool _isNeutronStar = false;
-	[SerializeField] private float _neutronLockDistance = 0.01F;
-	public bool IsLocked = false;
-	[SerializeField] private float _unlockDelay = 0.3F;
-	public HashSet<OrbitalBody> IgnoredBodies = new();
-
 	private Rigidbody2D _body;
 	public Rigidbody2D body
 	{
@@ -48,41 +41,6 @@ public class OrbitalBody : MonoBehaviour
 		InitialLaunch();
 	}
 
-	private void OnTriggerStay2D(Collider2D other)
-	{
-		if (!IsAttractor)
-		{
-			return;
-		}
-		var otherOrbitalBody = other.GetComponent<OrbitalBody>();
-
-		if (_isNeutronStar)
-		{
-			if (!otherOrbitalBody.IsLocked && Vector3.Distance(other.gameObject.transform.position, transform.position) < _neutronLockDistance)
-			{
-				other.gameObject.transform.position = transform.position;
-				otherOrbitalBody.IsLocked = true;
-				other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-			}
-
-			if (Vector3.Distance(other.gameObject.transform.position, transform.position) >= _neutronLockDistance)
-			{
-				StartCoroutine(UnlockPlanet(otherOrbitalBody));
-			}
-		}
-
-		if (otherOrbitalBody != null && otherOrbitalBody.IsAttractee && !IgnoredBodies.Contains(otherOrbitalBody) && !otherOrbitalBody.IsLocked)
-		{
-			ApplyGravityTo(otherOrbitalBody);
-		}
-	}
-
-	IEnumerator UnlockPlanet(OrbitalBody other)
-	{
-		yield return new WaitForSeconds(_unlockDelay);
-		other.IsLocked = false;
-	}
-
 	//this is for wormholes, when object TPs we temporarily ignore gravity from destination wormhole
 	private void OnCollisionEnter2D(Collision2D other)
 	{
@@ -90,18 +48,24 @@ public class OrbitalBody : MonoBehaviour
 		if (changeDragAfterCollision) body.drag = 0.4f;
 	}
 
-	private void OnTriggerExit2D(Collider2D other)
+	private void OnTriggerStay2D(Collider2D other)
 	{
-		var otherBody = other.GetComponent<OrbitalBody>();
-		if (otherBody != null && IgnoredBodies.Contains(otherBody))
+		if (!IsAttractor)
 		{
-			IgnoredBodies.Remove(otherBody);
+			return;
+		}
+		var otherOrbitalBody = other.GetComponent<OrbitalBody>();
+		if (otherOrbitalBody != null && otherOrbitalBody.IsAttractee && !IsBodyIgnored(otherOrbitalBody))
+		{
+			ApplyGravityTo(otherOrbitalBody);
 		}
 	}
 
 	public bool IsBodyIgnored(OrbitalBody other)
 	{
-		return _smartGravityField != null && _smartGravityField.IgnoredBodies.Contains(other);
+		return _smartGravityField != null 
+		       && (_smartGravityField.IgnoredBodies.Contains(other)
+			       || (_smartGravityField.IgnoredBodies.Count > 0 && _smartGravityField.IgnoreAllIfAnyIgnored));
 	}
 
 	public void StartIgnoringBody(OrbitalBody other)

@@ -473,10 +473,6 @@ MonoBehaviour:
   _initialOrbits: []
   _smartGravityField: {fileID: 0}
   changeDragAfterCollision: 0
-  _isNeutronStar: 0
-  _neutronLockDistance: 0.01
-  IsLocked: 0
-  _unlockDelay: 0.3
 --- !u!50 &1324812897
 Rigidbody2D:
   serializedVersion: 4
@@ -780,10 +776,6 @@ MonoBehaviour:
   _initialOrbits: []
   _smartGravityField: {fileID: 0}
   changeDragAfterCollision: 0
-  _isNeutronStar: 0
-  _neutronLockDistance: 0.01
-  IsLocked: 0
-  _unlockDelay: 0.3
 --- !u!1001 &770626893409024696
 PrefabInstance:
   m_ObjectHideFlags: 0

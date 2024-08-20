@@ -7,6 +7,8 @@ public class SmartGravityField : MonoBehaviour
 {
 	[HideInInspector] public HashSet<OrbitalBody> IgnoredBodies = new();
 
+	public bool IgnoreAllIfAnyIgnored = false;
+
 	private void OnTriggerExit2D(Collider2D other)
 	{
 		var otherBody = other.GetComponent<OrbitalBody>();

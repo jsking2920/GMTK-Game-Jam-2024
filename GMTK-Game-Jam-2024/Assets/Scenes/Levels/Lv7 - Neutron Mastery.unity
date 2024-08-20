@@ -229,10 +229,6 @@ MonoBehaviour:
   _initialOrbits: []
   _smartGravityField: {fileID: 0}
   changeDragAfterCollision: 0
-  _isNeutronStar: 0
-  _neutronLockDistance: 0.01
-  IsLocked: 0
-  _unlockDelay: 0.3
 --- !u!50 &110330909
 Rigidbody2D:
   serializedVersion: 4
@@ -450,10 +446,6 @@ MonoBehaviour:
   _initialOrbits: []
   _smartGravityField: {fileID: 0}
   changeDragAfterCollision: 0
-  _isNeutronStar: 0
-  _neutronLockDistance: 0.01
-  IsLocked: 0
-  _unlockDelay: 0.3
 --- !u!50 &232471604
 Rigidbody2D:
   serializedVersion: 4
@@ -1000,10 +992,6 @@ MonoBehaviour:
   _initialOrbits: []
   _smartGravityField: {fileID: 0}
   changeDragAfterCollision: 0
-  _isNeutronStar: 0
-  _neutronLockDistance: 0.01
-  IsLocked: 0
-  _unlockDelay: 0.3
 --- !u!50 &1253225743
 Rigidbody2D:
   serializedVersion: 4
@@ -1055,10 +1043,6 @@ MonoBehaviour:
   _initialOrbits: []
   _smartGravityField: {fileID: 0}
   changeDragAfterCollision: 0
-  _isNeutronStar: 0
-  _neutronLockDistance: 0.01
-  IsLocked: 0
-  _unlockDelay: 0.3
 --- !u!50 &1324812897
 Rigidbody2D:
   serializedVersion: 4
@@ -1357,95 +1341,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 979232957609406480, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
-      propertyPath: m_Mass
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 979232957609406480, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1108774316602810302, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4295589855194497891, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
-      propertyPath: _isNeutronStar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4295589855194497891, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
-      propertyPath: _neutronLockDistance
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4775460106899495667, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
-      propertyPath: m_Radius
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5205410078210892357, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6676120080206845921, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
+    - target: {fileID: 2070320913258734029, guid: a4eccee0a7855428ab4d7800b0f24e30, type: 3}
       propertyPath: m_Name
       value: Neutron Star (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 6787911131398912905, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7924004042118172153, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
+    - target: {fileID: 3308634451117554645, guid: a4eccee0a7855428ab4d7800b0f24e30, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.21
       objectReference: {fileID: 0}
-    - target: {fileID: 7924004042118172153, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
+    - target: {fileID: 3308634451117554645, guid: a4eccee0a7855428ab4d7800b0f24e30, type: 3}
       propertyPath: m_LocalPosition.y
       value: -3.82
       objectReference: {fileID: 0}
-    - target: {fileID: 7924004042118172153, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
+    - target: {fileID: 3308634451117554645, guid: a4eccee0a7855428ab4d7800b0f24e30, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7924004042118172153, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
+    - target: {fileID: 3308634451117554645, guid: a4eccee0a7855428ab4d7800b0f24e30, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7924004042118172153, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
+    - target: {fileID: 3308634451117554645, guid: a4eccee0a7855428ab4d7800b0f24e30, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 7924004042118172153, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
+    - target: {fileID: 3308634451117554645, guid: a4eccee0a7855428ab4d7800b0f24e30, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 7924004042118172153, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
+    - target: {fileID: 3308634451117554645, guid: a4eccee0a7855428ab4d7800b0f24e30, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 7924004042118172153, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
+    - target: {fileID: 3308634451117554645, guid: a4eccee0a7855428ab4d7800b0f24e30, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7924004042118172153, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
+    - target: {fileID: 3308634451117554645, guid: a4eccee0a7855428ab4d7800b0f24e30, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7924004042118172153, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
+    - target: {fileID: 3308634451117554645, guid: a4eccee0a7855428ab4d7800b0f24e30, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8503221992616787033, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
-      propertyPath: _isNeutronStar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8503221992616787033, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
-      propertyPath: _neutronLockDistance
-      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7ee5d92daf03cf44b83ce12f844baa55, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: a4eccee0a7855428ab4d7800b0f24e30, type: 3}
 --- !u!1 &1715747754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,10 +1532,6 @@ MonoBehaviour:
   _initialOrbits: []
   _smartGravityField: {fileID: 0}
   changeDragAfterCollision: 0
-  _isNeutronStar: 0
-  _neutronLockDistance: 0.01
-  IsLocked: 0
-  _unlockDelay: 0.3
 --- !u!50 &1876427734
 Rigidbody2D:
   serializedVersion: 4
@@ -1643,10 +1583,6 @@ MonoBehaviour:
   _initialOrbits: []
   _smartGravityField: {fileID: 0}
   changeDragAfterCollision: 0
-  _isNeutronStar: 0
-  _neutronLockDistance: 0.01
-  IsLocked: 0
-  _unlockDelay: 0.3
 --- !u!1001 &2106909369
 PrefabInstance:
   m_ObjectHideFlags: 0

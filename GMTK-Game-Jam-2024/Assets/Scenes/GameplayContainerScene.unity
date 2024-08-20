@@ -356,7 +356,7 @@ AreaEffector2D:
     m_Bits: 4294967295
   m_UseGlobalAngle: 0
   m_ForceAngle: 90
-  m_ForceMagnitude: 8
+  m_ForceMagnitude: 5
   m_ForceVariation: 0
   m_ForceTarget: 0
   m_Drag: 0
@@ -393,7 +393,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -5.211358}
+  m_Offset: {x: 0, y: -5.297496}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -404,7 +404,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18, y: 1.0772972}
+  m_Size: {x: 18, y: 0.90508795}
   m_EdgeRadius: 0
 --- !u!1 &305069512
 GameObject:
@@ -776,7 +776,7 @@ AreaEffector2D:
     m_Bits: 4294967295
   m_UseGlobalAngle: 0
   m_ForceAngle: 270
-  m_ForceMagnitude: 8
+  m_ForceMagnitude: 5
   m_ForceVariation: 0
   m_ForceTarget: 0
   m_Drag: 0
@@ -813,7 +813,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: -0.02383995, y: 5.214718}
+  m_Offset: {x: -0.02383995, y: 5.2912984}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -824,7 +824,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 17.968174, y: 1.0705895}
+  m_Size: {x: 17.968174, y: 0.9173751}
   m_EdgeRadius: 0
 --- !u!1 &503926778
 GameObject:
@@ -1368,37 +1368,37 @@ MonoBehaviour:
     threeStarThreshold: 100
   - levelName: Level 3
     sceneBuildIndex: 4
-    totalBallsToSink: 6
+    totalBallsToSink: 3
     oneStarThreshold: 100
     twoStarThreshold: 100
     threeStarThreshold: 100
   - levelName: Level 4
     sceneBuildIndex: 5
-    totalBallsToSink: 6
+    totalBallsToSink: 5
     oneStarThreshold: 100
     twoStarThreshold: 100
     threeStarThreshold: 100
   - levelName: Level 5
     sceneBuildIndex: 6
-    totalBallsToSink: 5
+    totalBallsToSink: 2
     oneStarThreshold: 100
     twoStarThreshold: 100
     threeStarThreshold: 100
   - levelName: Level 6
     sceneBuildIndex: 7
-    totalBallsToSink: 100
+    totalBallsToSink: 5
     oneStarThreshold: 100
     twoStarThreshold: 100
     threeStarThreshold: 100
   - levelName: Level 7
     sceneBuildIndex: 8
-    totalBallsToSink: 100
+    totalBallsToSink: 5
     oneStarThreshold: 100
     twoStarThreshold: 100
     threeStarThreshold: 100
   - levelName: Level 8
     sceneBuildIndex: 9
-    totalBallsToSink: 100
+    totalBallsToSink: 4
     oneStarThreshold: 100
     twoStarThreshold: 100
     threeStarThreshold: 100
@@ -1408,7 +1408,7 @@ MonoBehaviour:
     oneStarThreshold: 100
     twoStarThreshold: 100
     threeStarThreshold: 100
-  defaultLevelIndex: 0
+  defaultLevelIndex: 8
 --- !u!4 &766153513
 Transform:
   m_ObjectHideFlags: 0
@@ -2198,7 +2198,7 @@ AreaEffector2D:
     m_Bits: 4294967295
   m_UseGlobalAngle: 0
   m_ForceAngle: 0
-  m_ForceMagnitude: 8
+  m_ForceMagnitude: 5
   m_ForceVariation: 0
   m_ForceTarget: 0
   m_Drag: 0
@@ -2235,7 +2235,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: -8.836508, y: 0.0070209503}
+  m_Offset: {x: -8.901783, y: 0.0070209503}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2246,7 +2246,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1188002, y: 9.441685}
+  m_Size: {x: 0.9882517, y: 9.441685}
   m_EdgeRadius: 0
 --- !u!1 &1517972664
 GameObject:
@@ -2327,7 +2327,7 @@ AreaEffector2D:
     m_Bits: 4294967295
   m_UseGlobalAngle: 0
   m_ForceAngle: 180
-  m_ForceMagnitude: 8
+  m_ForceMagnitude: 5
   m_ForceVariation: 0
   m_ForceTarget: 0
   m_Drag: 0
@@ -2364,7 +2364,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 8.62685, y: 0.040418625}
+  m_Offset: {x: 8.682407, y: 0.040418625}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2375,7 +2375,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0462999, y: 9.391783}
+  m_Size: {x: 0.93518543, y: 9.391783}
   m_EdgeRadius: 0
 --- !u!1 &1627172932
 GameObject:
@@ -2872,7 +2872,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.16689491, y: 5.9234595}
+  m_Offset: {x: -0.16689491, y: 5.8934155}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2883,7 +2883,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 19.193546, y: 0.7070761}
+  m_Size: {x: 19.193546, y: 0.76714563}
   m_EdgeRadius: 0
 --- !u!61 &2091527175
 BoxCollider2D:
@@ -2917,7 +2917,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 9.118481, y: 0.036385775}
+  m_Offset: {x: 9.165503, y: 0.036385536}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2928,7 +2928,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6842537, y: 10.911894}
+  m_Size: {x: 0.590209, y: 10.911894}
   m_EdgeRadius: 0
 --- !u!61 &2091527176
 BoxCollider2D:
@@ -2962,7 +2962,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.15248966, y: -6.0251293}
+  m_Offset: {x: -0.15248966, y: -5.9850464}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2973,7 +2973,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 19.268667, y: 0.9582386}
+  m_Size: {x: 19.268667, y: 1.038405}
   m_EdgeRadius: 0
 --- !u!61 &2091527177
 BoxCollider2D:
@@ -3007,7 +3007,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -9.405851, y: -0.009391308}
+  m_Offset: {x: -9.4152565, y: -0.009391308}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3018,7 +3018,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.74552536, y: 10.920348}
+  m_Size: {x: 0.72671604, y: 10.920348}
   m_EdgeRadius: 0
 --- !u!1 &2114868714
 GameObject:
@@ -3104,7 +3104,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 66.1
+  m_fontSize: 51.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

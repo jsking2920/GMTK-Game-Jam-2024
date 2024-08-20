@@ -37,17 +37,17 @@ public class MusicManager : MonoBehaviour
         //Debug.Log("is this called");
         //currScene = SceneManager.GetActiveScene();
         //Debug.Log("the current scene is " + currScene);
-        if (curLevelIndex == 0)
+        if (curLevelIndex <= 2)
         {
             backgroundTrack.setParameterByNameWithLabel("State", "Level1", true);
             Debug.Log("Level 1 music start");
         }
-        else if (curLevelIndex == 1)
+        else if (curLevelIndex <= 5)
         {
             backgroundTrack.setParameterByNameWithLabel("State", "Level2", true);
             Debug.Log("Level 2 music start");
         }
-        else if (curLevelIndex == 2)
+        else if (curLevelIndex <= 9)
         {
             backgroundTrack.setParameterByNameWithLabel("State", "Level3", true);
             Debug.Log("Level 3 music start");
