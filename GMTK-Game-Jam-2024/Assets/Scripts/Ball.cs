@@ -85,7 +85,7 @@ public class Ball : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (isCueBall)
+        if (isCueBall && GameManager.Instance.gameState == GameManager.GameState.Playing)
         {
 	        _animationController.StartAim();
 			DrawLine(t.position, GetMousePos());
@@ -103,7 +103,7 @@ public class Ball : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if (isCueBall)
+        if (isCueBall && GameManager.Instance.gameState == GameManager.GameState.Playing)
         {
 	        Vector3 mousePos = GetMousePos();
             Vector2 pullBackVector = Vector2.ClampMagnitude(t.position - mousePos, maxPullBackDist);
@@ -120,7 +120,7 @@ public class Ball : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (isCueBall)
+        if (isCueBall && GameManager.Instance.gameState == GameManager.GameState.Playing)
         {
             _animationController.EndAim();
             //if not canceled

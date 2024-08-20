@@ -72,7 +72,7 @@ public class BlackHole : MonoBehaviour
 			yield break;
 		}
 
-		float shrinkTime = 1.0f;
+		float shrinkTime = 1.4f;
 		
 		bhCamera.enabled = true;
 		Time.timeScale = 0.05f;
