@@ -18,7 +18,6 @@ public class CueBall : Ball
 
     private FMOD.Studio.EventInstance chargeUpSFX;
 
-<
     protected override void Awake()
     {
         base.Awake();
@@ -56,7 +55,6 @@ public class CueBall : Ball
         }
     }
 
-    #region Event Callbacks
     private void OnCollisionEnter2D(Collision2D collision)
     {
 	    _animationController.OnCollision();
