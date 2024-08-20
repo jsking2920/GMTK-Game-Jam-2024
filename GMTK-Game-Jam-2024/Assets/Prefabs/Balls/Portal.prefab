@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aba6646b56fbac4ea046b1b9554e88f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IgnoreAllIfAnyIgnored: 0
 --- !u!1 &5400292722943374102
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb8cff44f725be45a7bf6c6474b98f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimationController: {fileID: 0}
+  AnimationController: {fileID: 8757103770212690503}
   _output: {fileID: 0}
   OwningBody: {fileID: 5898255664719743994}
 --- !u!1 &8063140968406685158
@@ -541,12 +542,8 @@ MonoBehaviour:
   _initVelocityType: 0
   _initVelocity: {x: 0, y: 0}
   _initialOrbits: []
-  _smartGravityField: {fileID: 0}
+  _smartGravityField: {fileID: 1999008255206295236}
   changeDragAfterCollision: 0
-  _isNeutronStar: 0
-  _neutronLockDistance: 0.01
-  IsLocked: 0
-  _unlockDelay: 0.3
 --- !u!114 &3935879079158918070
 MonoBehaviour:
   m_ObjectHideFlags: 0
