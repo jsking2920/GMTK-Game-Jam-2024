@@ -21,6 +21,15 @@ public class OrbitalBody : MonoBehaviour
 	[SerializeField] private Vector2 _initVelocity;
 	[SerializeField] private List<OrbitalBody> _initialOrbits;
 
+	//Optional param for wormholes and any orbital body that needs to ignore gravity for some objects temporarily
+	[SerializeField] private SmartGravityField _smartGravityField;
+	[SerializeField] private bool changeDragAfterCollision = false;
+
+	[Header("Neutron Star Only Fields")]
+	[SerializeField] private bool _isNeutronStar = false;
+	[SerializeField] private float _neutronLockDistance = 0.01F;
+	public bool IsLocked = false;
+	[SerializeField] private float _unlockDelay = 0.3F;
 	public HashSet<OrbitalBody> IgnoredBodies = new();
 
 	private Rigidbody2D _body;
@@ -46,19 +55,60 @@ public class OrbitalBody : MonoBehaviour
 			return;
 		}
 		var otherOrbitalBody = other.GetComponent<OrbitalBody>();
-		if (otherOrbitalBody != null && otherOrbitalBody.IsAttractee && !IgnoredBodies.Contains(otherOrbitalBody))
+
+		if (_isNeutronStar)
+		{
+			if (!otherOrbitalBody.IsLocked && Vector3.Distance(other.gameObject.transform.position, transform.position) < _neutronLockDistance)
+			{
+				other.gameObject.transform.position = transform.position;
+				otherOrbitalBody.IsLocked = true;
+				other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+			}
+
+			if (Vector3.Distance(other.gameObject.transform.position, transform.position) >= _neutronLockDistance)
+			{
+				StartCoroutine(UnlockPlanet(otherOrbitalBody));
+			}
+		}
+
+		if (otherOrbitalBody != null && otherOrbitalBody.IsAttractee && !IgnoredBodies.Contains(otherOrbitalBody) && !otherOrbitalBody.IsLocked)
 		{
 			ApplyGravityTo(otherOrbitalBody);
 		}
 	}
 
+	IEnumerator UnlockPlanet(OrbitalBody other)
+	{
+		yield return new WaitForSeconds(_unlockDelay);
+		other.IsLocked = false;
+	}
+
 	//this is for wormholes, when object TPs we temporarily ignore gravity from destination wormhole
+	private void OnCollisionEnter2D(Collision2D other)
+	{
+		// dumb fix so orbiting bodies gain drag when knocked out. otherwise they will fly forever which we don't want
+		if (changeDragAfterCollision) body.drag = 0.4f;
+	}
+
 	private void OnTriggerExit2D(Collider2D other)
 	{
 		var otherBody = other.GetComponent<OrbitalBody>();
 		if (otherBody != null && IgnoredBodies.Contains(otherBody))
 		{
 			IgnoredBodies.Remove(otherBody);
+		}
+	}
+
+	public bool IsBodyIgnored(OrbitalBody other)
+	{
+		return _smartGravityField != null && _smartGravityField.IgnoredBodies.Contains(other);
+	}
+
+	public void StartIgnoringBody(OrbitalBody other)
+	{
+		if (_smartGravityField != null)
+		{
+			_smartGravityField.IgnoredBodies.Add(other);
 		}
 	}
 

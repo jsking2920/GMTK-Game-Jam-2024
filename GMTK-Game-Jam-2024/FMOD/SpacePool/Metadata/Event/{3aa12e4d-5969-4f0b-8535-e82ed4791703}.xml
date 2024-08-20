@@ -118,7 +118,7 @@
 	</object>
 	<object class="SoundScatterer" id="{e8cc172d-573f-45ad-a68c-83f203897627}">
 		<property name="polyphony">
-			<value>32</value>
+			<value>20</value>
 		</property>
 		<property name="minimumTimeBetweenSounds">
 			<value>64</value>

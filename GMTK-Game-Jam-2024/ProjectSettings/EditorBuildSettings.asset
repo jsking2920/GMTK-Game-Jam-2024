@@ -6,6 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/GameplayContainerScene.unity
+    guid: c23a2d6915f013d458f4fbde64ac65f5
+  - enabled: 1
     path: Assets/Scenes/Levels/Lv1 - Intro.unity
     guid: e9d5a0edef1624ce8bebf9a0466b2b13
+  - enabled: 1
+    path: Assets/Scenes/Levels/Lv2 - Size.unity
+    guid: 85613b45cbc09487a8ff5d1c5679460a
+  - enabled: 1
+    path: Assets/Scenes/Levels/Lv3 - Timing.unity
+    guid: d662eb7ebadda4d4493d57dd20b016f9
+  - enabled: 1
+    path: Assets/Scenes/Levels/Lv4 - Neutron Intro.unity
+    guid: 4cc2f6f1789a24f75a02a81a1993b890
+  - enabled: 1
+    path: Assets/Scenes/Levels/Lv5 - Neutron Mastery.unity
+    guid: 2533955ad6ff0414c847c28d9fef9921
   m_configObjects: {}
