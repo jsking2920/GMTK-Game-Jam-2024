@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,11 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
+    [SerializeField] private GameObject MainMenu;
+    [SerializeField] private GameObject MainUICanvas;
+    
+    [SerializeField] private Button mainMenuStartButton;
+    
     [SerializeField] private Button quitButton;
     [SerializeField] private Button restartButton;
     [SerializeField] private Button levelsButton;
@@ -42,8 +48,12 @@ public class UIManager : MonoBehaviour
 //#if UNITY_WEBGL
         quitButton.gameObject.SetActive(false);
         //#endif
+        
+        mainMenuStartButton.onClick.RemoveAllListeners();
+        mainMenuStartButton.onClick.AddListener(GameManager.Instance.StartGame);
 
         shotCountText.text = "Shots: 0";
+        MainUICanvas.SetActive(false);
     }
 
     public void UpdateShotCount(int shots)
@@ -69,5 +79,24 @@ public class UIManager : MonoBehaviour
     public void btn_Quit()
     {
         Application.Quit();
+    }
+
+    public void SetMainMenuActive(bool active)
+    {
+        var camera = MainMenu.GetComponentInChildren<CinemachineVirtualCamera>();
+        if (active)
+        {
+            //Turning on
+            camera.enabled = true;
+            MainUICanvas.SetActive(false);
+            MainMenu.SetActive(true);
+        }
+        else
+        {
+            //Turning off
+            camera.enabled = false;
+            MainUICanvas.SetActive(true);
+            MainMenu.SetActive(false);
+        }
     }
 }
