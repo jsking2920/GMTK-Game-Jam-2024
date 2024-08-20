@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button quitButton;
     [SerializeField] private Button restartButton;
     [SerializeField] private Button levelsButton;
-    [SerializeField] private Button playPauseButton;
+    [SerializeField] private Button homeButton;
 
     [SerializeField] private TextMeshProUGUI shotCountText;
 
@@ -44,14 +44,15 @@ public class UIManager : MonoBehaviour
         restartButton.onClick.AddListener(btn_Restart);
         levelsButton.onClick.RemoveAllListeners();
         levelsButton.onClick.AddListener(btn_Levels);
-        playPauseButton.onClick.RemoveAllListeners();
-        playPauseButton.onClick.AddListener(btn_PlayPause);
 //#if UNITY_WEBGL
         quitButton.gameObject.SetActive(false);
         //#endif
         
         mainMenuStartButton.onClick.RemoveAllListeners();
         mainMenuStartButton.onClick.AddListener(GameManager.Instance.StartGame);
+
+        homeButton.onClick.RemoveAllListeners();
+        homeButton.onClick.AddListener(btn_Home);
 
         shotCountText.text = "Shots: 0";
         MainUICanvas.SetActive(false);
@@ -62,10 +63,6 @@ public class UIManager : MonoBehaviour
         shotCountText.text = "Shots: " + shots.ToString();
     }
 
-    public void btn_PlayPause()
-    {
-        // TODO: allow player to stop time?
-    }
 
     public void btn_Levels()
     {
@@ -80,6 +77,11 @@ public class UIManager : MonoBehaviour
     public void btn_Quit()
     {
         Application.Quit();
+    }
+
+    public void btn_Home()
+    {
+        // TODO
     }
 
     public void SetMainMenuActive(bool active)
