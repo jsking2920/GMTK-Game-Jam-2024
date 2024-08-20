@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Lv5 - Neutron Mastery.unity
     guid: 2533955ad6ff0414c847c28d9fef9921
+  - enabled: 1
+    path: Assets/Scenes/Levels/Lv6 - Wormhole Intro.unity
+    guid: 3e095a2cdc88e4e1db1b5cdef6c17413
   m_configObjects: {}
