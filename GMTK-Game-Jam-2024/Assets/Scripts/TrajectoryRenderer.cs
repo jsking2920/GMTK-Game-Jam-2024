@@ -50,6 +50,9 @@ public class TrajectoryRenderer : MonoBehaviour
 
     public void DrawPath(Vector2 forceDir, float initialVel)
     {
+        collisionSprite.SetActive(false);
+        DisableSecondaryDots();
+
         Vector2 curSimulatedVel = initialVel * forceDir;
         Vector2 curSimulatedPos = ball.transform.position;
         int curDotIndex = 0;
