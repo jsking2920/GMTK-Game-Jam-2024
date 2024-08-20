@@ -49,10 +49,16 @@ public class GameManager : MonoBehaviour
 	    yield return new WaitForSeconds(3);
         UIManager.Instance.TurnMenuPlanetsOff();
         OnMainMenuCameraMove.Invoke();
-
+        CueBall.Instance.PlayReadyBurst();
 	}
 
-    public void LoadNewLevel(int levelIndex)
+    private IEnumerator WaitForNextLevelReady()
+    {
+	    yield return new WaitForSeconds(0.5f);
+        CueBall.Instance.PlayReadyBurst();
+    }
+
+    public void LoadNewLevel(int levelIndex, bool fromMenu = false)
     {
         if (SceneManager.GetSceneByBuildIndex(levels[curLevelIndex].sceneBuildIndex).isLoaded)
             SceneManager.UnloadSceneAsync(levels[curLevelIndex].sceneBuildIndex);
@@ -70,7 +76,8 @@ public class GameManager : MonoBehaviour
 
         gameState = GameState.Playing;
 
-        StartCoroutine(WaitForMainMenuCameraMove());
+        if (fromMenu) StartCoroutine(WaitForMainMenuCameraMove());
+        else StartCoroutine(WaitForNextLevelReady());
     }
 
     public void RestartLevel()
@@ -106,7 +113,7 @@ public class GameManager : MonoBehaviour
 
     public void MenuPlayButton()
     {
-        LoadNewLevel(curLevelIndex);
+        LoadNewLevel(curLevelIndex, true);
     }
 
     public void OnPlayerShot(Ball cueBall)

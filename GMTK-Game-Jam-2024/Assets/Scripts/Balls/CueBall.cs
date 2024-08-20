@@ -159,8 +159,7 @@ public class CueBall : Ball
             if (isMoving)
             {
                 isMoving = false;
-                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ReadyToShoot");
-                readyBurst.Play();
+                PlayReadyBurst();
                 rb.velocity = Vector2.zero;
                 _animationController.EndMovement();
             }
@@ -171,6 +170,12 @@ public class CueBall : Ball
             isMoving = true;
         }
     }
+
+    public void PlayReadyBurst()
+    {
+	    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ReadyToShoot");
+	    readyBurst.Play();
+	}
 
     private Vector3 GetMousePos()
     {

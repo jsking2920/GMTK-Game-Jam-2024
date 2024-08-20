@@ -15,7 +15,7 @@ public class LevelSelectButton : MonoBehaviour
     }
     public void btn_LevelSelect()
     {
-        GameManager.Instance.LoadNewLevel(level);
+        GameManager.Instance.LoadNewLevel(level, true);
     }
 
     public void SetStars()
