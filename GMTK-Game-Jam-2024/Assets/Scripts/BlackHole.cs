@@ -30,7 +30,9 @@ public class BlackHole : MonoBehaviour
 
 	private void HandleBall(OrbitalBody body)
 	{
-		StartCoroutine(BlackHoleAnimation(body.gameObject.GetComponent<Ball>()));
+		var ball = body.gameObject.GetComponent<Ball>();
+		ball.Die();
+		StartCoroutine(BlackHoleAnimation(ball));
 	}
 
 	private void HandleCueBall(OrbitalBody body)

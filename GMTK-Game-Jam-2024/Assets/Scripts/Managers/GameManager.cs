@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(levels[curLevelIndex].sceneBuildIndex);
         SceneManager.LoadScene(levels[levelIndex].sceneBuildIndex, LoadSceneMode.Additive);
         curLevelIndex = levelIndex;
+        Time.timeScale = 1;
         shotsTaken = 0;
         ballsSunk = 0;
         MusicManager.Instance.changeBackgroundTrack(curLevelIndex);
