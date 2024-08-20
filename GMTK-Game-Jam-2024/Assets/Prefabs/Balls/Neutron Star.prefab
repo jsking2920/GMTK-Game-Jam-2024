@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 105325841575672337}
   - component: {fileID: 7199699672160409710}
+  - component: {fileID: 86626257485213768}
   m_Layer: 2
   m_Name: GravityField
   m_TagString: Untagged
@@ -150,6 +151,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
+--- !u!114 &86626257485213768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833204248813437828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aba6646b56fbac4ea046b1b9554e88f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IgnoreAllIfAnyIgnored: 1
 --- !u!1 &2070320913258734029
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +177,6 @@ GameObject:
   - component: {fileID: 3899155651363588725}
   - component: {fileID: 5861795578481814073}
   - component: {fileID: 4205416165416666771}
-  - component: {fileID: 5728084411289856402}
   - component: {fileID: 5587833671569917500}
   m_Layer: 0
   m_Name: Neutron Star
@@ -185,6 +198,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 228454417039788828}
   - {fileID: 1663112260141149796}
   - {fileID: 2617297725331097628}
   - {fileID: 105325841575672337}
@@ -223,12 +237,8 @@ MonoBehaviour:
   _initVelocityType: 0
   _initVelocity: {x: 0, y: 0}
   _initialOrbits: []
-  _smartGravityField: {fileID: 0}
+  _smartGravityField: {fileID: 86626257485213768}
   changeDragAfterCollision: 0
-  _isNeutronStar: 1
-  _neutronLockDistance: 0.3
-  IsLocked: 0
-  _unlockDelay: 0.3
 --- !u!114 &5861795578481814073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,41 +266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c79d5a041e26b47dd85a847ef130a8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!58 &5728084411289856402
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070320913258734029}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!50 &5587833671569917500
 Rigidbody2D:
   serializedVersion: 4
@@ -318,6 +293,87 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!1 &5955560813738269478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 228454417039788828}
+  - component: {fileID: 5470717836063327073}
+  - component: {fileID: 436814146090072149}
+  m_Layer: 2
+  m_Name: NeutronStar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &228454417039788828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5955560813738269478}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3308634451117554645}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5470717836063327073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5955560813738269478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7054bc1f955ea7149958b4287c6adc80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _owningBody: {fileID: 3899155651363588725}
+--- !u!58 &436814146090072149
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5955560813738269478}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.3
 --- !u!1 &7057692267838816410
 GameObject:
   m_ObjectHideFlags: 0
