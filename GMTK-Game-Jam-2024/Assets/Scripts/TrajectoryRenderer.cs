@@ -67,7 +67,7 @@ public class TrajectoryRenderer : MonoBehaviour
 
             foreach (Collider2D collisionResult in results)
             {
-                if (collisionResult != null && collisionResult.gameObject != ball.gameObject)
+                if (collisionResult != null && collisionResult.gameObject != ball.gameObject && !collisionResult.isTrigger)
                 {
                     Ball otherBall = collisionResult.GetComponent<Ball>();
 
