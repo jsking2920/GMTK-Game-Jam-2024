@@ -221,6 +221,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   minVel: 0.3
   highVelThreshold: 5
+  standardDrag: 0.4
   radius: 0.5
 --- !u!114 &3899155651363588725
 MonoBehaviour:
@@ -458,7 +459,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.01
 --- !u!1 &7057692267838816410
 GameObject:
   m_ObjectHideFlags: 0

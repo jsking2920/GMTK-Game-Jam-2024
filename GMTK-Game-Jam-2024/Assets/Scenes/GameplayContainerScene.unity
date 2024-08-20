@@ -739,70 +739,70 @@ MonoBehaviour:
   - levelName: Level 0
     sceneBuildIndex: 1
     totalBallsToSink: 3
-    oneStarThreshold: 100
-    twoStarThreshold: 100
-    threeStarThreshold: 100
+    oneStarThreshold: 8
+    twoStarThreshold: 4
+    threeStarThreshold: 2
   - levelName: Level 1
     sceneBuildIndex: 2
     totalBallsToSink: 5
-    oneStarThreshold: 8
-    twoStarThreshold: 6
+    oneStarThreshold: 10
+    twoStarThreshold: 5
     threeStarThreshold: 2
   - levelName: Level 2
     sceneBuildIndex: 3
     totalBallsToSink: 5
-    oneStarThreshold: 100
-    twoStarThreshold: 100
+    oneStarThreshold: 10
+    twoStarThreshold: 5
     threeStarThreshold: 3
   - levelName: Level 3
     sceneBuildIndex: 4
     totalBallsToSink: 3
-    oneStarThreshold: 100
-    twoStarThreshold: 100
+    oneStarThreshold: 8
+    twoStarThreshold: 4
     threeStarThreshold: 3
   - levelName: Level 4
     sceneBuildIndex: 5
     totalBallsToSink: 5
-    oneStarThreshold: 100
-    twoStarThreshold: 100
+    oneStarThreshold: 8
+    twoStarThreshold: 5
     threeStarThreshold: 4
   - levelName: Level 5
     sceneBuildIndex: 6
     totalBallsToSink: 2
-    oneStarThreshold: 100
-    twoStarThreshold: 6
+    oneStarThreshold: 9
+    twoStarThreshold: 5
     threeStarThreshold: 2
   - levelName: Level 6
     sceneBuildIndex: 7
     totalBallsToSink: 5
-    oneStarThreshold: 100
-    twoStarThreshold: 100
+    oneStarThreshold: 12
+    twoStarThreshold: 8
     threeStarThreshold: 5
   - levelName: Level 7
     sceneBuildIndex: 8
     totalBallsToSink: 5
-    oneStarThreshold: 100
-    twoStarThreshold: 100
+    oneStarThreshold: 8
+    twoStarThreshold: 5
     threeStarThreshold: 4
   - levelName: Level 8
     sceneBuildIndex: 9
     totalBallsToSink: 4
-    oneStarThreshold: 100
-    twoStarThreshold: 100
-    threeStarThreshold: 4
+    oneStarThreshold: 8
+    twoStarThreshold: 5
+    threeStarThreshold: 3
   - levelName: Level 9
     sceneBuildIndex: 10
     totalBallsToSink: 3
-    oneStarThreshold: 100
-    twoStarThreshold: 100
+    oneStarThreshold: 10
+    twoStarThreshold: 5
     threeStarThreshold: 3
   - levelName: Level 10
     sceneBuildIndex: 11
     totalBallsToSink: 4
-    oneStarThreshold: 100
-    twoStarThreshold: 100
-    threeStarThreshold: 3
-  defaultLevelIndex: 7
+    oneStarThreshold: 10
+    twoStarThreshold: 6
+    threeStarThreshold: 5
+  defaultLevelIndex: 9
 --- !u!4 &766153513
 Transform:
   m_ObjectHideFlags: 0
