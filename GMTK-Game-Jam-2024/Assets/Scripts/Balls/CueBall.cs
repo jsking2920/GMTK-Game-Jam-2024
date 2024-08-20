@@ -78,6 +78,18 @@ public class CueBall : Ball
     {
         if (isAiming && GameManager.Instance.gameState == GameManager.GameState.Playing)
         {
+            if (Input.GetMouseButtonDown(1))
+            {
+                isAiming = false;
+                _animationController.EndAim();
+                lineRenderer.enabled = false;
+                trajectoryPathRenderer.HidePath();
+
+                currentForceMagnitude = 0.0f;
+                currentForceDir = Vector2.zero;
+
+                chargeUpSFX.setParameterByName("ChargePercent", 0);
+            }
             Vector3 mousePos = GetMousePos();
             Vector2 pullBackVector = Vector2.ClampMagnitude(t.position - mousePos, maxPullBackDist);
 
@@ -96,20 +108,23 @@ public class CueBall : Ball
         if (isAiming && GameManager.Instance.gameState == GameManager.GameState.Playing)
         {
             _animationController.EndAim();
-            //if not canceled
-            _animationController.StartMovement();
+
+            if (currentForceMagnitude > 3.0f)
+            {
+                _animationController.StartMovement();
+                rb.velocity = currentForceDir * currentForceMagnitude;
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Shoot");
+                GameManager.Instance.OnPlayerShot(this);
+            }
+
             lineRenderer.enabled = false;
             trajectoryPathRenderer.HidePath();
 
-            rb.velocity = currentForceDir * currentForceMagnitude;
-
             currentForceMagnitude = 0.0f;
             currentForceDir = Vector2.zero;
-
-            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Shoot");
+            
             chargeUpSFX.setParameterByName("ChargePercent", 0);
 
-            GameManager.Instance.OnPlayerShot(this);
             isAiming = false;
         }
     }
