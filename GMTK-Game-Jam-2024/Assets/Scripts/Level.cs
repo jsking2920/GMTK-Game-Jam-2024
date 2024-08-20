@@ -11,4 +11,6 @@ public class Level
     public int oneStarThreshold;
     public int twoStarThreshold;
     public int threeStarThreshold;
+
+    public int bestStarRankAchieved;
 }

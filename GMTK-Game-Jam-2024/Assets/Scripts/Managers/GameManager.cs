@@ -115,7 +115,26 @@ public class GameManager : MonoBehaviour
 
         if (ballsSunk >= levels[curLevelIndex].totalBallsToSink)
         {
+            if (shotsTaken <= levels[curLevelIndex].threeStarThreshold)
+            {
+                levels[curLevelIndex].bestStarRankAchieved = 3;
+            }
+            else if (shotsTaken <= levels[curLevelIndex].twoStarThreshold)
+            {
+                levels[curLevelIndex].bestStarRankAchieved = 2;
+            }
+            else if (shotsTaken <= levels[curLevelIndex].oneStarThreshold)
+            {
+                levels[curLevelIndex].bestStarRankAchieved = 1;
+            }
+            else
+            {
+                levels[curLevelIndex].bestStarRankAchieved = 0;
+            }
+            
             levelEndScreen.SetActive(true);
+
+            
         }
     }
 
