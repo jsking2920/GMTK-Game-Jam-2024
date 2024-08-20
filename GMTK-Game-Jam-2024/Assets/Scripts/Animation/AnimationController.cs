@@ -13,7 +13,16 @@ public class AnimationController : MonoBehaviour
     void Start()
     {
         animator = AnimationTransform.GetComponent<Animator>();
-        radius = transform.GetComponent<Renderer>().bounds.extents.magnitude * 0.6f;
+        Renderer renderer = transform.GetComponent<Renderer>();
+        if (renderer == null)
+        {
+            foreach (Transform child in transform)
+            {
+                renderer = child.GetComponent<Renderer>();
+                if (renderer != null) break;
+            }
+        }
+        radius = renderer.bounds.extents.magnitude * 0.6f;
         
         MoveAnimationTowardCamera();
     }

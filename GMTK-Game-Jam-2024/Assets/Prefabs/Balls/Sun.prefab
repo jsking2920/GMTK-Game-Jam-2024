@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 8809521946381594815}
   - component: {fileID: 1108774316602810302}
   - component: {fileID: 979232957609406480}
+  - component: {fileID: 7566936960786407800}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Ball
@@ -236,6 +237,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   minVel: 0.3
+  highVelThreshold: 6
+  standardDrag: 0.4
   radius: 0.5
 --- !u!114 &8503221992616787033
 MonoBehaviour:
@@ -256,10 +259,6 @@ MonoBehaviour:
   _initialOrbits: []
   _smartGravityField: {fileID: 0}
   changeDragAfterCollision: 0
-  _isNeutronStar: 0
-  _neutronLockDistance: 0.01
-  IsLocked: 0
-  _unlockDelay: 0.3
 --- !u!114 &1244222975265250325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +348,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &7566936960786407800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6676120080206845921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 164864af7fbc65e4eb1a6321089e89cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimationTransform: {fileID: 4924753482965436552}
 --- !u!1 &6787911131398912905
 GameObject:
   m_ObjectHideFlags: 0
