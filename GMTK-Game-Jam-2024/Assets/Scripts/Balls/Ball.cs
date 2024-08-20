@@ -12,7 +12,7 @@ public class Ball : MonoBehaviour
     // Ball velocity gets clamped to zero below this threshold to shorten time to wait for next shot
     public float minVel = 0.5f;
     // Ball velocity drops sharply below this threshold
-    [SerializeField] private float highVelThreshold = 6.0f;
+    [HideInInspector] public float highVelThreshold = 6.0f;
     // Linear drag applied at normal speed
     [HideInInspector] public float standardDrag = 0.4f;
 
@@ -53,7 +53,6 @@ public class Ball : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
             _animationController.EndMovement();
-            
         }
     }
 

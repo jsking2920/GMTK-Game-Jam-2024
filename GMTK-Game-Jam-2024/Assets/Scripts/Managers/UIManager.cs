@@ -51,6 +51,8 @@ public class UIManager : MonoBehaviour
         
         mainMenuStartButton.onClick.RemoveAllListeners();
         mainMenuStartButton.onClick.AddListener(GameManager.Instance.StartGame);
+        mainMenuStartButton.onClick.AddListener(playSFX);
+        ;
 
         homeButton.onClick.RemoveAllListeners();
         homeButton.onClick.AddListener(btn_Home);
@@ -70,15 +72,21 @@ public class UIManager : MonoBehaviour
         shotCountText.text = "Shots: " + shots.ToString();
     }
 
+    private void playSFX()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ButtonClick");
+    }
 
     public void btn_Levels()
     {
         // TODO
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ButtonClick");
     }
 
     public void btn_Restart()
     {
         GameManager.Instance.RestartLevel();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ButtonClick");
     }
 
     public void btn_Quit()
@@ -89,10 +97,12 @@ public class UIManager : MonoBehaviour
     public void btn_Home()
     {
         // TODO
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ButtonClick");
     }
 
     public void btn_Settings()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ButtonClick");
         isSettingsOpen = !isSettingsOpen;
 
         restartButton.gameObject.SetActive(isSettingsOpen);
