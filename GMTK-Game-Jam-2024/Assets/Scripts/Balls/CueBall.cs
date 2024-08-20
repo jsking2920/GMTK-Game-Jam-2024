@@ -19,6 +19,7 @@ public class CueBall : Ball
     private FMOD.Studio.EventInstance chargeUpSFX;
 
     bool isAiming = false;
+    private bool isMoving;
 
     protected override void Awake()
     {
@@ -140,6 +141,28 @@ public class CueBall : Ball
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(0, point1);
         lineRenderer.SetPosition(1, point2);
+    }
+
+    protected override void ApplyManualDrag()
+    {
+        base.ApplyManualDrag();
+        
+        float curSpeed = rb.velocity.magnitude;
+        if (curSpeed <= minVel)
+        {
+            if (isMoving)
+            {
+                isMoving = false;
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ReadyToShoot");
+                rb.velocity = Vector2.zero;
+                _animationController.EndMovement();
+            }
+
+        }
+        else
+        {
+            isMoving = true;
+        }
     }
 
     private Vector3 GetMousePos()

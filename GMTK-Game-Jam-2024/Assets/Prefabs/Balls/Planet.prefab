@@ -161,7 +161,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  minVel: 0.2
+  minVel: 0
+  highVelThreshold: 0
   radius: 0.5
 --- !u!114 &374592412001304958
 MonoBehaviour:

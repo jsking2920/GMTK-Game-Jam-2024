@@ -33,7 +33,7 @@ public class Ball : MonoBehaviour
         ApplyManualDrag();
     }
 
-    private void ApplyManualDrag()
+    protected virtual void ApplyManualDrag()
     {
         float curSpeed = rb.velocity.magnitude;
 
@@ -53,6 +53,7 @@ public class Ball : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
             _animationController.EndMovement();
+            
         }
     }
 

@@ -1414,7 +1414,7 @@ MonoBehaviour:
     oneStarThreshold: 100
     twoStarThreshold: 100
     threeStarThreshold: 3
-  defaultLevelIndex: 9
+  defaultLevelIndex: 7
 --- !u!4 &766153513
 Transform:
   m_ObjectHideFlags: 0
