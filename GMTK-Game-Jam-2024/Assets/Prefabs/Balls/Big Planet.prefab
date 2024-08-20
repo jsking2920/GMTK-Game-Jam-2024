@@ -88,7 +88,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   minVel: 0
   highVelThreshold: 0
-  radius: 0.5
+  standardDrag: 0.4
+  radius: 1
 --- !u!114 &6972591562840953164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +232,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 502821475705c044ab808595ae45b27b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -375,7 +376,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 5b0ca5eda3a7eb940b7825b1512d3515, type: 3}
+  - {fileID: 2100000, guid: 502821475705c044ab808595ae45b27b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

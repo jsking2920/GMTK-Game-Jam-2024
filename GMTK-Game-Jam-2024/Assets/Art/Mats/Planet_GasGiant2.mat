@@ -59,7 +59,7 @@ Material:
     - _OutlineThickness: 0.18
     - _PlanetDirectionality: 20
     - _PlanetMoveSpeed: 1
-    - _PoleBias: 0.05
+    - _PoleBias: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SpecularOpacity: 1.26
@@ -70,7 +70,7 @@ Material:
     - _Color2: {r: 0.86415094, g: 0.33033076, b: 0.13532923, a: 1}
     - _FrenelColor: {r: 0.6075471, g: 0.15100694, b: 0.15016729, a: 1}
     - _OutlineColor: {r: 0.3283019, g: 0.20282024, b: 0.034069028, a: 0}
-    - _PoleColor: {r: 0.8867924, g: 0.6654047, b: 0.37312207, a: 0}
+    - _PoleColor: {r: 0.8862745, g: 0.372549, b: 0.372549, a: 0}
     - _SpecularColor1: {r: 0.38867918, g: 0.38867918, b: 0.38867918, a: 0}
     - _SpecularColor2: {r: 1, g: 0.62938, b: 0.4811319, a: 0}
   m_BuildTextureStacks: []
