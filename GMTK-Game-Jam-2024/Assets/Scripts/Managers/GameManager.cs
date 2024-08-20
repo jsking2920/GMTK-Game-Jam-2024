@@ -15,15 +15,16 @@ public class GameManager : MonoBehaviour
     }
     public GameState gameState;
 
-    [SerializeField] private Level[] levels;
-    private int curLevelIndex = 0;
+    public Level[] levels;
+    [HideInInspector] public int curLevelIndex = 0;
 
-    private int shotsTaken = 0;
+    [HideInInspector] public int shotsTaken = 0;
     private int ballsSunk = 0;
 
     public int defaultLevelIndex = 0;
 
     public UnityEvent OnFirstLevelStart;
+    [SerializeField] private GameObject levelEndScreen;
 
     private void Awake()
     {
@@ -81,6 +82,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartLevel()
     {
+        levelEndScreen.SetActive(false);
         LoadNewLevel(curLevelIndex);
     }
 
@@ -97,8 +99,14 @@ public class GameManager : MonoBehaviour
 
         if (ballsSunk >= levels[curLevelIndex].totalBallsToSink)
         {
-            LoadNewLevel(curLevelIndex + 1 >= levels.Length ? 0 : curLevelIndex + 1);
+            levelEndScreen.SetActive(true);
         }
+    }
+
+    public void GoToNextLevel()
+    {
+        levelEndScreen.SetActive(false);
+        LoadNewLevel(curLevelIndex + 1 >= levels.Length ? 0 : curLevelIndex + 1);
     }
 
     public void OnCueBallSunk(Ball ball)
