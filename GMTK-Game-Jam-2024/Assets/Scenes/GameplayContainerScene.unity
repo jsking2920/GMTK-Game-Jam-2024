@@ -1118,43 +1118,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   levels:
-  - levelName: Level 1
+  - levelName: Level 0
     sceneBuildIndex: 1
+    totalBallsToSink: 3
+    oneStarThreshold: 100
+    twoStarThreshold: 100
+    threeStarThreshold: 100
+  - levelName: Level 1
+    sceneBuildIndex: 2
     totalBallsToSink: 5
     oneStarThreshold: 8
     twoStarThreshold: 6
     threeStarThreshold: 4
   - levelName: Level 2
-    sceneBuildIndex: 2
+    sceneBuildIndex: 3
     totalBallsToSink: 5
     oneStarThreshold: 100
     twoStarThreshold: 100
     threeStarThreshold: 100
   - levelName: Level 3
-    sceneBuildIndex: 3
-    totalBallsToSink: 6
-    oneStarThreshold: 100
-    twoStarThreshold: 100
-    threeStarThreshold: 100
-  - levelName: Level 4
     sceneBuildIndex: 4
     totalBallsToSink: 6
     oneStarThreshold: 100
     twoStarThreshold: 100
     threeStarThreshold: 100
-  - levelName: Level 5
+  - levelName: Level 4
     sceneBuildIndex: 5
+    totalBallsToSink: 6
+    oneStarThreshold: 100
+    twoStarThreshold: 100
+    threeStarThreshold: 100
+  - levelName: Level 5
+    sceneBuildIndex: 6
     totalBallsToSink: 5
     oneStarThreshold: 100
     twoStarThreshold: 100
     threeStarThreshold: 100
   - levelName: Level 6
-    sceneBuildIndex: 6
+    sceneBuildIndex: 7
     totalBallsToSink: 100
     oneStarThreshold: 100
     twoStarThreshold: 100
     threeStarThreshold: 100
-  defaultLevelIndex: 3
+  - levelName: Level 7
+    sceneBuildIndex: 8
+    totalBallsToSink: 100
+    oneStarThreshold: 100
+    twoStarThreshold: 100
+    threeStarThreshold: 100
+  - levelName: Level 8
+    sceneBuildIndex: 9
+    totalBallsToSink: 100
+    oneStarThreshold: 100
+    twoStarThreshold: 100
+    threeStarThreshold: 100
+  - levelName: Level 9
+    sceneBuildIndex: 10
+    totalBallsToSink: 100
+    oneStarThreshold: 100
+    twoStarThreshold: 100
+    threeStarThreshold: 100
+  defaultLevelIndex: 6
 --- !u!4 &766153513
 Transform:
   m_ObjectHideFlags: 0
@@ -2628,7 +2652,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 66.1
+  m_fontSize: 51.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
