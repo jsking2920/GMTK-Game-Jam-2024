@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        curLevelIndex = defaultLevelIndex;
         shotsTaken = 0;
         ballsSunk = 0;
         UIManager.Instance.SetMainMenuActive(false);
@@ -69,7 +68,7 @@ public class GameManager : MonoBehaviour
 	    OnFirstLevelStart.Invoke();
     }
 
-    private void LoadNewLevel(int levelIndex)
+    public void LoadNewLevel(int levelIndex)
     {
         SceneManager.UnloadSceneAsync(levels[curLevelIndex].sceneBuildIndex);
         SceneManager.LoadScene(levels[levelIndex].sceneBuildIndex, LoadSceneMode.Additive);
