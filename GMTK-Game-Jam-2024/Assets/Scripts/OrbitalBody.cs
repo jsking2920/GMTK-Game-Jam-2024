@@ -30,6 +30,7 @@ public class OrbitalBody : MonoBehaviour
 	[SerializeField] private float _neutronLockDistance = 0.01F;
 	public bool IsLocked = false;
 	[SerializeField] private float _unlockDelay = 0.3F;
+	public HashSet<OrbitalBody> IgnoredBodies = new();
 
 	private Rigidbody2D _body;
 	public Rigidbody2D body
@@ -87,6 +88,15 @@ public class OrbitalBody : MonoBehaviour
 	{
 		// dumb fix so orbiting bodies gain drag when knocked out. otherwise they will fly forever which we don't want
 		if (changeDragAfterCollision) body.drag = 0.4f;
+	}
+
+	private void OnTriggerExit2D(Collider2D other)
+	{
+		var otherBody = other.GetComponent<OrbitalBody>();
+		if (otherBody != null && IgnoredBodies.Contains(otherBody))
+		{
+			IgnoredBodies.Remove(otherBody);
+		}
 	}
 
 	public bool IsBodyIgnored(OrbitalBody other)
