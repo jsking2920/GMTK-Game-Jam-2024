@@ -18,6 +18,8 @@ public class CueBall : Ball
 
     private FMOD.Studio.EventInstance chargeUpSFX;
 
+    bool isAiming = false;
+
     protected override void Awake()
     {
         base.Awake();
@@ -40,6 +42,7 @@ public class CueBall : Ball
         lineRenderer.enabled = false;
         currentForceDir = Vector2.zero;
         currentForceMagnitude = 0.0f;
+        isAiming = false;
 
         chargeUpSFX = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/ChargeUp");
         chargeUpSFX.setParameterByName("ChargePercent", 0, true);
@@ -64,6 +67,8 @@ public class CueBall : Ball
     {
         if (GameManager.Instance.gameState == GameManager.GameState.Playing && rb.velocity.magnitude < minVel)
         {
+            isAiming = true;
+
             _animationController.StartAim();
             DrawLine(t.position, GetMousePos());
             lineRenderer.enabled = true;
@@ -80,7 +85,7 @@ public class CueBall : Ball
 
     private void OnMouseDrag()
     {
-        if (GameManager.Instance.gameState == GameManager.GameState.Playing)
+        if (isAiming && GameManager.Instance.gameState == GameManager.GameState.Playing)
         {
             Vector3 mousePos = GetMousePos();
             Vector2 pullBackVector = Vector2.ClampMagnitude(t.position - mousePos, maxPullBackDist);
@@ -97,7 +102,7 @@ public class CueBall : Ball
 
     private void OnMouseUp()
     {
-        if (GameManager.Instance.gameState == GameManager.GameState.Playing)
+        if (isAiming && GameManager.Instance.gameState == GameManager.GameState.Playing)
         {
             _animationController.EndAim();
             //if not canceled
@@ -114,6 +119,7 @@ public class CueBall : Ball
             chargeUpSFX.setParameterByName("ChargePercent", 0);
 
             GameManager.Instance.OnPlayerShot(this);
+            isAiming = false;
         }
     }
 
