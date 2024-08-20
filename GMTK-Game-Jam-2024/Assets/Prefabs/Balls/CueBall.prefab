@@ -229,12 +229,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4851297543041329569}
-  - component: {fileID: 3991389799199304328}
+  - component: {fileID: 6060262296825279001}
   - component: {fileID: 6387636446931769345}
   - component: {fileID: 4602868952535808077}
+  - component: {fileID: 409431576109634607}
   - component: {fileID: 6117374086341956839}
   - component: {fileID: 6788722638891451208}
-  - component: {fileID: 409431576109634607}
   - component: {fileID: 2434154389400550374}
   - component: {fileID: 2536122487916942408}
   - component: {fileID: 2891872379153195924}
@@ -265,7 +265,7 @@ Transform:
   - {fileID: 486807378825174154}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3991389799199304328
+--- !u!114 &6060262296825279001
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,15 +274,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8215310156588020665}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34eb60f2b700ef442b2e30591b8fe58a, type: 3}
+  m_Script: {fileID: 11500000, guid: 84385084358cf6341b96db916ed6096f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  minVel: 0.45
+  radius: 0.5
   maxPullBackDist: 4
   maxForceMagnitude: 25
-  minVel: 0.3
-  isCueBall: 1
-  radius: 0.5
 --- !u!114 &6387636446931769345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,6 +314,19 @@ MonoBehaviour:
   dotsParent: {fileID: 1101149144996827886}
   dotPrefab: {fileID: 3875129478360219338, guid: c25a7cb7dba3eb1479750cfd07d722f8, type: 3}
   collisionCircleSpritePrefab: {fileID: 8667352218137878829, guid: 6037250c54e641242a4a8db8bfb2e1fd, type: 3}
+--- !u!114 &409431576109634607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8215310156588020665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 164864af7fbc65e4eb1a6321089e89cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimationTransform: {fileID: 486807378825174154}
 --- !u!114 &6117374086341956839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,19 +352,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSparkleSpeed: 25
---- !u!114 &409431576109634607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8215310156588020665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 164864af7fbc65e4eb1a6321089e89cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AnimationTransform: {fileID: 486807378825174154}
 --- !u!58 &2434154389400550374
 CircleCollider2D:
   m_ObjectHideFlags: 0
