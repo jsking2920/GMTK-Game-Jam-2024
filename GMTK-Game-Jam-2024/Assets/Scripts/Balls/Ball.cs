@@ -14,7 +14,7 @@ public class Ball : MonoBehaviour
     // Ball velocity drops sharply below this threshold
     [SerializeField] private float highVelThreshold = 6.0f;
     // Linear drag applied at normal speed
-    private float standardDrag = 0.4f;
+    [HideInInspector] public float standardDrag = 0.4f;
 
     public float radius = 0.5f;
 

@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Lv9 - Wormhole Intro.unity
     guid: 96672fe308ec64060947071942c038fc
+  - enabled: 1
+    path: Assets/Scenes/Levels/Lv10 - Wormhole + Neutron Star.unity
+    guid: d073501ef2d984546a94f86d2e09ef83
   m_configObjects: {}

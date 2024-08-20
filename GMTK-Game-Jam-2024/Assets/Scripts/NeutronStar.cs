@@ -15,6 +15,7 @@ public class NeutronStar : MonoBehaviour
 			_owningBody.StartIgnoringBody(otherBody);
 			if (_currentLockedBody == null)
 			{
+				FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/NeutronSucc");
 				otherBody.transform.position = transform.position;
 				var rb = otherBody.GetComponent<Rigidbody2D>();
 				rb.velocity = Vector2.zero;
