@@ -94,6 +94,7 @@ public class UIManager : MonoBehaviour
         else
         {
             //Turning off
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ZoomOut");
             camera.enabled = false;
             MainUICanvas.SetActive(true);
             MainMenu.SetActive(false);
