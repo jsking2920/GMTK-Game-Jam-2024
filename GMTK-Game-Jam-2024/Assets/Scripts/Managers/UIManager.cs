@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject LevelSelectCanvas;
     [SerializeField] private GameObject CreditsCanvas;
     [SerializeField] private GameObject wallParent;
+
+    [SerializeField] private GameObject levelEndScreen;
     
     [SerializeField] private Button mainMenuStartButton;
     
@@ -114,10 +116,13 @@ public class UIManager : MonoBehaviour
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ButtonClick");   
         LevelSelectCanvas.SetActive(true);
+
+        levelEndScreen.SetActive(false); // TODO: state machine for ui panels, etc, etc
     }
 
     public void btn_Restart()
     {
+        levelEndScreen.SetActive(false);
         GameManager.Instance.RestartLevel();
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ButtonClick");
     }
@@ -129,6 +134,7 @@ public class UIManager : MonoBehaviour
 
     public void btn_Home()
     {
+        levelEndScreen.SetActive(false);
         GameManager.Instance.ToMenu();
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ButtonClick");
     }

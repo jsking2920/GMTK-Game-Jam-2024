@@ -269,6 +269,7 @@ MonoBehaviour:
   LevelSelectCanvas: {fileID: 2699952331800709325}
   CreditsCanvas: {fileID: 839657124}
   wallParent: {fileID: 412863469}
+  levelEndScreen: {fileID: 928453560}
   mainMenuStartButton: {fileID: 1966568800}
   quitButton: {fileID: 800021085}
   restartButton: {fileID: 800021084}
@@ -1815,6 +1816,10 @@ PrefabInstance:
       propertyPath: m_text
       value: 4 Shots
       objectReference: {fileID: 0}
+    - target: {fileID: 1373880170805388646, guid: 0f630e6dad30f4c199d6023a127db5a8, type: 3}
+      propertyPath: m_Name
+      value: LevelSelectButton
+      objectReference: {fileID: 0}
     - target: {fileID: 1611509435587631058, guid: 0f630e6dad30f4c199d6023a127db5a8, type: 3}
       propertyPath: m_text
       value: 4 Shots
@@ -2114,6 +2119,10 @@ PrefabInstance:
     - target: {fileID: 8519133873375614346, guid: 0f630e6dad30f4c199d6023a127db5a8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729316042573869721, guid: 0f630e6dad30f4c199d6023a127db5a8, type: 3}
+      propertyPath: m_Name
+      value: RestartButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

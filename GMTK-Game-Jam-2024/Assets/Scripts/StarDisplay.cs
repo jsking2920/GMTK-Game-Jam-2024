@@ -19,24 +19,32 @@ public class StarDisplay : MonoBehaviour
         text = GetComponentInChildren<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void OnEnable()
     {
-        int threshold = 0; 
-        switch(index)
+        StartCoroutine(Co_Initialize());
+    }
+
+    //BAD
+    private IEnumerator Co_Initialize()
+    {
+        yield return null;
+
+        int threshold = 0;
+        switch (index)
         {
             case 0:
-            threshold = GameManager.Instance.levels[GameManager.Instance.curLevelIndex].oneStarThreshold;
-            text.text = GameManager.Instance.levels[GameManager.Instance.curLevelIndex].oneStarThreshold.ToString() +" Strokes";
-            break;
+                threshold = GameManager.Instance.levels[GameManager.Instance.curLevelIndex].oneStarThreshold;
+                text.text = GameManager.Instance.levels[GameManager.Instance.curLevelIndex].oneStarThreshold.ToString() + " Shots";
+                break;
             case 1:
-            threshold = GameManager.Instance.levels[GameManager.Instance.curLevelIndex].twoStarThreshold;
-            text.text = GameManager.Instance.levels[GameManager.Instance.curLevelIndex].twoStarThreshold.ToString() +" Strokes";
-            break;
+                threshold = GameManager.Instance.levels[GameManager.Instance.curLevelIndex].twoStarThreshold;
+                text.text = GameManager.Instance.levels[GameManager.Instance.curLevelIndex].twoStarThreshold.ToString() + " Shots";
+                break;
             case 2:
-            threshold = GameManager.Instance.levels[GameManager.Instance.curLevelIndex].threeStarThreshold;
-            text.text = GameManager.Instance.levels[GameManager.Instance.curLevelIndex].threeStarThreshold.ToString() +" Strokes";
-            break;
+                threshold = GameManager.Instance.levels[GameManager.Instance.curLevelIndex].threeStarThreshold;
+                text.text = GameManager.Instance.levels[GameManager.Instance.curLevelIndex].threeStarThreshold.ToString() + " Shots";
+                break;
         }
         if (GameManager.Instance.shotsTaken <= threshold)
         {

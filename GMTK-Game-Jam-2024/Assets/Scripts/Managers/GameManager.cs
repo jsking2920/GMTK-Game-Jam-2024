@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         shotsTaken = 0;
         ballsSunk = 0;
+        UIManager.Instance.UpdateShotCount(shotsTaken);
 
         MusicManager.Instance.changeBackgroundTrack(curLevelIndex);
 
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         shotsTaken = 0;
         ballsSunk = 0;
+        UIManager.Instance.UpdateShotCount(shotsTaken);
 
         gameState = GameState.Playing;
     }
