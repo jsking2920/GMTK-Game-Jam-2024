@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         curLevelIndex = defaultLevelIndex;
         shotsTaken = 0;
         ballsSunk = 0;
-        MusicManager.Instance.playBackgroundTrack();
+        MusicManager.Instance.loadBackgroundTrack();
     }
 
     private void LoadNewLevel(int levelIndex)
@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         curLevelIndex = levelIndex;
         shotsTaken = 0;
         ballsSunk = 0;
+        MusicManager.Instance.changeBackgroundTrack(curLevelIndex);
     }
 
     public void RestartLevel()
@@ -65,7 +66,7 @@ public class GameManager : MonoBehaviour
 
         if (ballsSunk >= levels[curLevelIndex].totalBallsToSink)
         {
-            LoadNewLevel(curLevelIndex + 1 >= levels.Length ? 0 : curLevelIndex);
+            LoadNewLevel(curLevelIndex + 1 >= levels.Length ? 0 : curLevelIndex + 1);
         }
     }
 

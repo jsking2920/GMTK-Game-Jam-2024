@@ -21,7 +21,9 @@ public class OrbitalBody : MonoBehaviour
 	[SerializeField] private Vector2 _initVelocity;
 	[SerializeField] private List<OrbitalBody> _initialOrbits;
 
-	public HashSet<OrbitalBody> IgnoredBodies = new();
+	//Optional param for wormholes and any orbital body that needs to ignore gravity for some objects temporarily
+	[SerializeField] private SmartGravityField _smartGravityField;
+	[SerializeField] private bool changeDragAfterCollision = false;
 
 	[Header("Neutron Star Only Fields")]
 	[SerializeField] private bool _isNeutronStar = false;
@@ -81,12 +83,22 @@ public class OrbitalBody : MonoBehaviour
 	}
 
 	//this is for wormholes, when object TPs we temporarily ignore gravity from destination wormhole
-	private void OnTriggerExit2D(Collider2D other)
+	private void OnCollisionEnter2D(Collision2D other)
 	{
-		var otherBody = other.GetComponent<OrbitalBody>();
-		if (otherBody != null && IgnoredBodies.Contains(otherBody))
+		// dumb fix so orbiting bodies gain drag when knocked out. otherwise they will fly forever which we don't want
+		if (changeDragAfterCollision) body.drag = 0.4f;
+	}
+
+	public bool IsBodyIgnored(OrbitalBody other)
+	{
+		return _smartGravityField != null && _smartGravityField.IgnoredBodies.Contains(other);
+	}
+
+	public void StartIgnoringBody(OrbitalBody other)
+	{
+		if (_smartGravityField != null)
 		{
-			IgnoredBodies.Remove(otherBody);
+			_smartGravityField.IgnoredBodies.Add(other);
 		}
 	}
 
