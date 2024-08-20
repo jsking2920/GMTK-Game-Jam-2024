@@ -52,6 +52,22 @@ public class CueBall : Ball
         chargeUpSFX.start();
     }
 
+    private void Update()
+    {
+        if (isAiming && Input.GetMouseButtonDown(1))
+        {
+            isAiming = false;
+            _animationController.EndAim();
+            lineRenderer.enabled = false;
+            trajectoryPathRenderer.HidePath();
+
+            currentForceMagnitude = 0.0f;
+            currentForceDir = Vector2.zero;
+
+            chargeUpSFX.setParameterByName("ChargePercent", 0);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
 	    _animationController.OnCollision();
@@ -81,18 +97,6 @@ public class CueBall : Ball
     {
         if (isAiming && GameManager.Instance.gameState == GameManager.GameState.Playing)
         {
-            if (Input.GetMouseButtonDown(1))
-            {
-                isAiming = false;
-                _animationController.EndAim();
-                lineRenderer.enabled = false;
-                trajectoryPathRenderer.HidePath();
-
-                currentForceMagnitude = 0.0f;
-                currentForceDir = Vector2.zero;
-
-                chargeUpSFX.setParameterByName("ChargePercent", 0);
-            }
             Vector3 mousePos = GetMousePos();
             Vector2 pullBackVector = Vector2.ClampMagnitude(t.position - mousePos, maxPullBackDist);
 
