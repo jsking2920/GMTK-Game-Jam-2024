@@ -8,9 +8,13 @@ public class Walls : MonoBehaviour
 
 	public bool updateShader = false;
 	private Material _material;
+	private Animator _animator;
+
+	[SerializeField] private GameObject _wallParent;
 
 	private void Awake()
 	{
+		_animator = GetComponent<Animator>();
 		_material = GetComponent<Renderer>().material;
 		_material.SetFloat("_Fade", 0f);
 	}
@@ -23,4 +27,20 @@ public class Walls : MonoBehaviour
 			_material.SetFloat("_Fade", animVal);
 	    }
     }
+
+    public void PlayFade()
+    {
+		_animator.SetBool("fadePlaying", true);
+    }
+
+    public void FadeDone()
+    {
+		_animator.SetBool("fadePlaying", false);
+    }
+
+    public void HideWalls()
+    {
+	    FadeDone();
+	    _material.SetFloat("_Fade", 0f);
+	}
 }

@@ -1621,6 +1621,36 @@ MonoBehaviour:
   curLevelIndex: 0
   shotsTaken: 0
   levelEndScreen: {fileID: 928453560}
+  OnMainMenuCameraMove:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2006824008}
+        m_TargetAssemblyTypeName: Walls, Assembly-CSharp
+        m_MethodName: PlayFade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Base Layer.WallFade
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnMainMenuCameraReset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2006824008}
+        m_TargetAssemblyTypeName: Walls, Assembly-CSharp
+        m_MethodName: HideWalls
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &766153513
 Transform:
   m_ObjectHideFlags: 0
@@ -1879,6 +1909,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 978635958684182652, guid: 2103d49cf6e1b984eab9e2f5466c36c0, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452772446943459495, guid: 2103d49cf6e1b984eab9e2f5466c36c0, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2608689965568772816, guid: 2103d49cf6e1b984eab9e2f5466c36c0, type: 3}
@@ -5234,6 +5268,8 @@ GameObject:
   - component: {fileID: 2006824004}
   - component: {fileID: 2006824006}
   - component: {fileID: 2006824005}
+  - component: {fileID: 2006824007}
+  - component: {fileID: 2006824008}
   m_Layer: 0
   m_Name: pasted__pasted__pCylinder5
   m_TagString: Untagged
@@ -5306,6 +5342,42 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006824003}
   m_Mesh: {fileID: -5362872154381727376, guid: 711c5bb6d9735e24bba6556c86f23fc2, type: 3}
+--- !u!95 &2006824007
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006824003}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9650e9c4cd75a5a40b4615f82359bcce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2006824008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006824003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7192f1c0876f9ad43b5506c2b3197491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animVal: 0
+  updateShader: 0
+  _wallParent: {fileID: 412863469}
 --- !u!1 &2017931667
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject levelEndScreen;
 
+    [SerializeField] private UnityEvent OnMainMenuCameraMove;
+    [SerializeField] private UnityEvent OnMainMenuCameraReset;
+
     private void Awake()
     {
         if (Instance != null)
@@ -45,7 +48,9 @@ public class GameManager : MonoBehaviour
     {
 	    yield return new WaitForSeconds(3);
         UIManager.Instance.TurnMenuPlanetsOff();
-    }
+        OnMainMenuCameraMove.Invoke();
+
+	}
 
     public void LoadNewLevel(int levelIndex)
     {
@@ -91,7 +96,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         levelEndScreen.SetActive(false);
 
-        MusicManager.Instance.loadBackgroundTrack();
+        OnMainMenuCameraReset.Invoke();
+
+		MusicManager.Instance.loadBackgroundTrack();
         UIManager.Instance.SetMainMenuActive(true);
 
         gameState = GameState.MainMenu;
