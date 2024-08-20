@@ -117,6 +117,11 @@ public class UIManager : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ButtonClick");   
         LevelSelectCanvas.SetActive(true);
 
+        foreach (Button button in ListSelectButtons)
+        {
+            button.GetComponent<LevelSelectButton>().SetStars();
+        }
+
         levelEndScreen.SetActive(false); // TODO: state machine for ui panels, etc, etc
     }
 

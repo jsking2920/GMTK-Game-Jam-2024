@@ -12,5 +12,5 @@ public class Level
     public int twoStarThreshold;
     public int threeStarThreshold;
 
-    public int bestStarRankAchieved;
+    [HideInInspector] public int bestStarRankAchieved = 0;
 }

@@ -117,15 +117,18 @@ public class GameManager : MonoBehaviour
         {
             if (shotsTaken <= levels[curLevelIndex].threeStarThreshold)
             {
-                levels[curLevelIndex].bestStarRankAchieved = 3;
+                if (levels[curLevelIndex].bestStarRankAchieved < 3) 
+                    levels[curLevelIndex].bestStarRankAchieved = 3;
             }
             else if (shotsTaken <= levels[curLevelIndex].twoStarThreshold)
             {
-                levels[curLevelIndex].bestStarRankAchieved = 2;
+                if (levels[curLevelIndex].bestStarRankAchieved < 2)
+                    levels[curLevelIndex].bestStarRankAchieved = 2;
             }
             else if (shotsTaken <= levels[curLevelIndex].oneStarThreshold)
             {
-                levels[curLevelIndex].bestStarRankAchieved = 1;
+                if (levels[curLevelIndex].bestStarRankAchieved < 1)
+                    levels[curLevelIndex].bestStarRankAchieved = 1;
             }
             else
             {
@@ -133,8 +136,6 @@ public class GameManager : MonoBehaviour
             }
             
             levelEndScreen.SetActive(true);
-
-            
         }
     }
 
