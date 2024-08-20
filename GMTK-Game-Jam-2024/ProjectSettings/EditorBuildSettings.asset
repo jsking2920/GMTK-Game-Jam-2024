@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Lv4 - Timing Practice.unity
     guid: d662eb7ebadda4d4493d57dd20b016f9
   - enabled: 1
+    path: Assets/Scenes/Levels/Lv5 - Neutron Intro.unity
+    guid: e6854ce1454264443aa77a038a3495ec
+  - enabled: 1
     path: Assets/Scenes/Levels/Lv6 - Neutron Practice.unity
     guid: 4cc2f6f1789a24f75a02a81a1993b890
   - enabled: 1
