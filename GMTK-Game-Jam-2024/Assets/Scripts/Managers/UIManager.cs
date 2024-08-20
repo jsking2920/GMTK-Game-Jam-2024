@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Cinemachine;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -32,6 +31,8 @@ public class UIManager : MonoBehaviour
     bool isSettingsOpen = false;
     [SerializeField] private List<Button> ListSelectButtons;
 
+    [SerializeField] private GameObject menuPlanetsParent;
+
     private void Awake()
     {
         if (Instance != null)
@@ -49,18 +50,21 @@ public class UIManager : MonoBehaviour
     {
         quitButton.onClick.RemoveAllListeners();
         quitButton.onClick.AddListener(btn_Quit);
-        restartButton.onClick.RemoveAllListeners();
-        restartButton.onClick.AddListener(btn_Restart);
-        levelsButton.onClick.RemoveAllListeners();
-        levelsButton.onClick.AddListener(btn_Levels);
-        creditsButton.onClick.RemoveAllListeners();
-        creditsButton.onClick.AddListener(btn_Credits);
-//#if UNITY_WEBGL
+        //#if UNITY_WEBGL
         quitButton.gameObject.SetActive(false);
         //#endif
+
+        restartButton.onClick.RemoveAllListeners();
+        restartButton.onClick.AddListener(btn_Restart);
+
+        levelsButton.onClick.RemoveAllListeners();
+        levelsButton.onClick.AddListener(btn_Levels);
+
+        creditsButton.onClick.RemoveAllListeners();
+        creditsButton.onClick.AddListener(btn_Credits);
         
         mainMenuStartButton.onClick.RemoveAllListeners();
-        mainMenuStartButton.onClick.AddListener(GameManager.Instance.StartGame);
+        mainMenuStartButton.onClick.AddListener(GameManager.Instance.MenuPlayButton);
         mainMenuStartButton.onClick.AddListener(playSFX);
 
         homeButton.onClick.RemoveAllListeners();
@@ -125,7 +129,7 @@ public class UIManager : MonoBehaviour
 
     public void btn_Home()
     {
-        // TODO
+        GameManager.Instance.ToMenu();
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ButtonClick");
     }
 
@@ -168,6 +172,7 @@ public class UIManager : MonoBehaviour
             MainUICanvas.SetActive(false);
             MainMenu.SetActive(true);
             wallParent.SetActive(false);
+            menuPlanetsParent.SetActive(true);
         }
         else
         {
@@ -178,5 +183,11 @@ public class UIManager : MonoBehaviour
             MainMenu.SetActive(false);
             wallParent.SetActive(true);
         }
+    }
+
+    public void TurnMenuPlanetsOff()
+    {
+        if (GameManager.Instance.gameState != GameManager.GameState.MainMenu)
+            menuPlanetsParent.SetActive(false);
     }
 }

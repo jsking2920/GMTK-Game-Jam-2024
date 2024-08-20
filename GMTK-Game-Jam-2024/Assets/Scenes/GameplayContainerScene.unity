@@ -291,6 +291,7 @@ MonoBehaviour:
   - {fileID: 2699952331800709329}
   - {fileID: 2699952331800709328}
   - {fileID: 2699952331800709327}
+  menuPlanetsParent: {fileID: 548157032}
 --- !u!4 &97583821
 Transform:
   m_ObjectHideFlags: 0
@@ -1310,10 +1311,6 @@ MonoBehaviour:
     threeStarThreshold: 5
   curLevelIndex: 0
   shotsTaken: 0
-  defaultLevelIndex: 0
-  OnFirstLevelStart:
-    m_PersistentCalls:
-      m_Calls: []
   levelEndScreen: {fileID: 928453560}
 --- !u!4 &766153513
 Transform:
@@ -1814,6 +1811,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -184.66501
       objectReference: {fileID: 0}
+    - target: {fileID: 975389731909737090, guid: 0f630e6dad30f4c199d6023a127db5a8, type: 3}
+      propertyPath: m_text
+      value: 4 Shots
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611509435587631058, guid: 0f630e6dad30f4c199d6023a127db5a8, type: 3}
+      propertyPath: m_text
+      value: 4 Shots
+      objectReference: {fileID: 0}
     - target: {fileID: 2221649495967907257, guid: 0f630e6dad30f4c199d6023a127db5a8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2049,6 +2054,10 @@ PrefabInstance:
     - target: {fileID: 7311798186585503464, guid: 0f630e6dad30f4c199d6023a127db5a8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -58.7288
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361817878304172564, guid: 0f630e6dad30f4c199d6023a127db5a8, type: 3}
+      propertyPath: m_text
+      value: 4 Shots
       objectReference: {fileID: 0}
     - target: {fileID: 7367311610630887578, guid: 0f630e6dad30f4c199d6023a127db5a8, type: 3}
       propertyPath: m_AnchorMax.y

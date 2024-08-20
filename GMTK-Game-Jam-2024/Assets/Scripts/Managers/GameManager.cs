@@ -21,9 +21,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int shotsTaken = 0;
     private int ballsSunk = 0;
 
-    public int defaultLevelIndex = 0;
-
-    public UnityEvent OnFirstLevelStart;
     [SerializeField] private GameObject levelEndScreen;
 
     private void Awake()
@@ -41,47 +38,65 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SceneManager.LoadScene(levels[defaultLevelIndex].sceneBuildIndex, LoadSceneMode.Additive);
-        curLevelIndex = defaultLevelIndex;
-        shotsTaken = 0;
-        ballsSunk = 0;
-        MusicManager.Instance.loadBackgroundTrack();
-
-        UIManager.Instance.SetMainMenuActive(true);
-        gameState = GameState.MainMenu;
-    }
-    
-    
-
-    public void StartGame()
-    {
-        shotsTaken = 0;
-        ballsSunk = 0;
-        UIManager.Instance.SetMainMenuActive(false);
-        gameState = GameState.Playing;
-        StartCoroutine(WaitForMainMenuCameraMove());
+        ToMenu();
     }
 
     private IEnumerator WaitForMainMenuCameraMove()
     {
 	    yield return new WaitForSeconds(3);
-	    OnFirstLevelStart.Invoke();
+        UIManager.Instance.TurnMenuPlanetsOff();
     }
 
     public void LoadNewLevel(int levelIndex)
     {
-        SceneManager.UnloadSceneAsync(levels[curLevelIndex].sceneBuildIndex);
+        if (SceneManager.GetSceneByBuildIndex(levels[curLevelIndex].sceneBuildIndex).isLoaded)
+            SceneManager.UnloadSceneAsync(levels[curLevelIndex].sceneBuildIndex);
         SceneManager.LoadScene(levels[levelIndex].sceneBuildIndex, LoadSceneMode.Additive);
         curLevelIndex = levelIndex;
+
         Time.timeScale = 1;
         shotsTaken = 0;
         ballsSunk = 0;
+
         MusicManager.Instance.changeBackgroundTrack(curLevelIndex);
+
+        UIManager.Instance.SetMainMenuActive(false);
+
+        gameState = GameState.Playing;
+
+        StartCoroutine(WaitForMainMenuCameraMove());
     }
 
     public void RestartLevel()
     {
         levelEndScreen.SetActive(false);
+
+        if (SceneManager.GetSceneByBuildIndex(levels[curLevelIndex].sceneBuildIndex).isLoaded)
+            SceneManager.UnloadSceneAsync(levels[curLevelIndex].sceneBuildIndex);
+        SceneManager.LoadScene(levels[curLevelIndex].sceneBuildIndex, LoadSceneMode.Additive);
+
+        Time.timeScale = 1;
+        shotsTaken = 0;
+        ballsSunk = 0;
+
+        gameState = GameState.Playing;
+    }
+
+    public void ToMenu()
+    {
+        if (SceneManager.GetSceneByBuildIndex(levels[curLevelIndex].sceneBuildIndex).isLoaded)
+            SceneManager.UnloadSceneAsync(levels[curLevelIndex].sceneBuildIndex);
+        Time.timeScale = 1;
+        levelEndScreen.SetActive(false);
+
+        MusicManager.Instance.loadBackgroundTrack();
+        UIManager.Instance.SetMainMenuActive(true);
+
+        gameState = GameState.MainMenu;
+    }
+
+    public void MenuPlayButton()
+    {
         LoadNewLevel(curLevelIndex);
     }
 
@@ -110,6 +125,6 @@ public class GameManager : MonoBehaviour
 
     public void OnCueBallSunk(Ball ball)
     {
-        // TODO: Let player reposition cue ball and shoot again
+        
     }
 }
