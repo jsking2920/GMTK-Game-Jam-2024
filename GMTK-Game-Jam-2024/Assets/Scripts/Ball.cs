@@ -28,8 +28,11 @@ public class Ball : MonoBehaviour
 
     private AnimationController _animationController;
 
+    private static Ball cueBall;
+
     private void Awake()
     {
+	    if (isCueBall) cueBall = this;
         _animationController = GetComponent<AnimationController>();
         lineRenderer = GetComponent<LineRenderer>();
         rb = GetComponent<Rigidbody2D>();
@@ -58,6 +61,20 @@ public class Ball : MonoBehaviour
             rb.velocity = Vector2.zero;
             _animationController.EndMovement();
         }
+    }
+
+    public void Die()
+    {
+        _animationController.OnDeath();
+        if (cueBall != null)
+        {
+            cueBall.Celebrate();
+        }
+    }
+
+    public void Celebrate()
+    {
+        _animationController.OnOtherObjectDeath();
     }
 
     #region Event Callbacks
