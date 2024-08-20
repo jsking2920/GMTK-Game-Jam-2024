@@ -40,17 +40,17 @@ public class MusicManager : MonoBehaviour
         if (curLevelIndex <= 2)
         {
             backgroundTrack.setParameterByNameWithLabel("State", "Level1", true);
-            Debug.Log("Level 1 music start");
+            //Debug.Log("Level 1 music start");
         }
         else if (curLevelIndex <= 5)
         {
             backgroundTrack.setParameterByNameWithLabel("State", "Level2", true);
-            Debug.Log("Level 2 music start");
+            //Debug.Log("Level 2 music start");
         }
         else if (curLevelIndex <= 9)
         {
             backgroundTrack.setParameterByNameWithLabel("State", "Level3", true);
-            Debug.Log("Level 3 music start");
+            //Debug.Log("Level 3 music start");
         }
     }
 }
