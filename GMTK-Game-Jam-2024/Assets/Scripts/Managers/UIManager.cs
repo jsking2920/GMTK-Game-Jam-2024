@@ -66,6 +66,9 @@ public class UIManager : MonoBehaviour
         settingsButton.onClick.RemoveAllListeners();
         settingsButton.onClick.AddListener(btn_Settings);
 
+        levelBackToMenuButton.onClick.RemoveAllListeners();
+        levelBackToMenuButton.onClick.AddListener(btn_LevelReturn);
+
         homeButton.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
 
@@ -129,11 +132,9 @@ public class UIManager : MonoBehaviour
         else settingsButton.targetGraphic.color = Color.white;
     }
 
-    public void btn_LevelSelect(int level)
+    public void btn_LevelReturn()
     {
-        Debug.Log(level);
-        
-        
+        LevelSelectCanvas.SetActive(false);
     }
 
     public void SetMainMenuActive(bool active)

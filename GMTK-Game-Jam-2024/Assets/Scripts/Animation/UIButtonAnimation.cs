@@ -11,6 +11,11 @@ public class UIButtonAnimation : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         animator.speed = 0f;
     }
+
+    void OnDisable()
+    {
+        animator.speed = 0f;
+    }
     //Detect if the Cursor starts to pass over the GameObject
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
